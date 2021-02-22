@@ -14,6 +14,19 @@
           "build/Accord.targets": {}
         }
       },
+      "Accord.Genetic/3.8.2-alpha": {
+        "type": "package",
+        "dependencies": {
+          "Accord": "3.8.2-alpha",
+          "Accord.Math": "3.8.2-alpha"
+        },
+        "compile": {
+          "lib/netstandard2.0/Accord.Genetic.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Genetic.dll": {}
+        }
+      },
       "Accord.MachineLearning/3.8.2-alpha": {
         "type": "package",
         "dependencies": {
@@ -55,6 +68,20 @@
         "runtime": {
           "lib/netstandard2.0/Accord.Math.Core.dll": {},
           "lib/netstandard2.0/Accord.Math.dll": {}
+        }
+      },
+      "Accord.Neuro/3.8.2-alpha": {
+        "type": "package",
+        "dependencies": {
+          "Accord": "3.8.2-alpha",
+          "Accord.Genetic": "3.8.2-alpha",
+          "Accord.Math": "3.8.2-alpha"
+        },
+        "compile": {
+          "lib/netstandard2.0/Accord.Neuro.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Neuro.dll": {}
         }
       },
       "Accord.Statistics/3.8.2-alpha": {
@@ -126,6 +153,39 @@
         "lib/netstandard1.4/Accord.xml",
         "lib/netstandard2.0/Accord.dll",
         "lib/netstandard2.0/Accord.xml"
+      ]
+    },
+    "Accord.Genetic/3.8.2-alpha": {
+      "sha512": "I+qtVttoIJqHHTZzrQvGW8msqC2BoDPXptlyrUP1Y7ex4fKcjgjrKvHYQ1vInNQx2WGp2faAVjGI15VKsrOX/w==",
+      "type": "package",
+      "path": "accord.genetic/3.8.2-alpha",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "accord.genetic.3.8.2-alpha.nupkg.sha512",
+        "accord.genetic.nuspec",
+        "lib/net35-unity full v3.5/Accord.Genetic.dll",
+        "lib/net35-unity full v3.5/Accord.Genetic.xml",
+        "lib/net35-unity micro v3.5/Accord.Genetic.dll",
+        "lib/net35-unity micro v3.5/Accord.Genetic.xml",
+        "lib/net35-unity subset v3.5/Accord.Genetic.dll",
+        "lib/net35-unity subset v3.5/Accord.Genetic.xml",
+        "lib/net35-unity web v3.5/Accord.Genetic.dll",
+        "lib/net35-unity web v3.5/Accord.Genetic.xml",
+        "lib/net35/Accord.Genetic.dll",
+        "lib/net35/Accord.Genetic.xml",
+        "lib/net40/Accord.Genetic.dll",
+        "lib/net40/Accord.Genetic.xml",
+        "lib/net45/Accord.Genetic.dll",
+        "lib/net45/Accord.Genetic.xml",
+        "lib/net46/Accord.Genetic.dll",
+        "lib/net46/Accord.Genetic.xml",
+        "lib/net462/Accord.Genetic.dll",
+        "lib/net462/Accord.Genetic.xml",
+        "lib/netstandard1.4/Accord.Genetic.dll",
+        "lib/netstandard1.4/Accord.Genetic.xml",
+        "lib/netstandard2.0/Accord.Genetic.dll",
+        "lib/netstandard2.0/Accord.Genetic.xml"
       ]
     },
     "Accord.MachineLearning/3.8.2-alpha": {
@@ -249,6 +309,37 @@
         "lib/netstandard2.0/Accord.Math.xml"
       ]
     },
+    "Accord.Neuro/3.8.2-alpha": {
+      "sha512": "D721CBg8mZ+5s92KD8pycHWjq6HlwCSOKeqoBKmc5TH4ds5azkRG0xq4Hhia6Wr1jL/buU5smgC91HQspWaTpw==",
+      "type": "package",
+      "path": "accord.neuro/3.8.2-alpha",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "accord.neuro.3.8.2-alpha.nupkg.sha512",
+        "accord.neuro.nuspec",
+        "lib/net35-unity full v3.5/Accord.Neuro.dll",
+        "lib/net35-unity full v3.5/Accord.Neuro.xml",
+        "lib/net35-unity micro v3.5/Accord.Neuro.dll",
+        "lib/net35-unity micro v3.5/Accord.Neuro.xml",
+        "lib/net35-unity subset v3.5/Accord.Neuro.dll",
+        "lib/net35-unity subset v3.5/Accord.Neuro.xml",
+        "lib/net35-unity web v3.5/Accord.Neuro.dll",
+        "lib/net35-unity web v3.5/Accord.Neuro.xml",
+        "lib/net35/Accord.Neuro.dll",
+        "lib/net35/Accord.Neuro.xml",
+        "lib/net40/Accord.Neuro.dll",
+        "lib/net40/Accord.Neuro.xml",
+        "lib/net45/Accord.Neuro.dll",
+        "lib/net45/Accord.Neuro.xml",
+        "lib/net46/Accord.Neuro.dll",
+        "lib/net46/Accord.Neuro.xml",
+        "lib/net462/Accord.Neuro.dll",
+        "lib/net462/Accord.Neuro.xml",
+        "lib/netstandard2.0/Accord.Neuro.dll",
+        "lib/netstandard2.0/Accord.Neuro.xml"
+      ]
+    },
     "Accord.Statistics/3.8.2-alpha": {
       "sha512": "smQUcRwCGM6apaQrnjpc2Fo07k32bZ6W0r4oaUgftpsHMq8uFLUdMOljuyWddTrgjXFD8Lxkvkngb4nd+LpUwg==",
       "type": "package",
@@ -297,6 +388,7 @@
     "net5.0": [
       "Accord.MachineLearning >= 3.8.2-alpha",
       "Accord.MachineLearning.GPL >= 3.8.2-alpha",
+      "Accord.Neuro >= 3.8.2-alpha",
       "IOOperations >= 1.0.0",
       "MonoObjectiveEOALib >= 1.0.0"
     ]
@@ -352,6 +444,10 @@
             "version": "[3.8.2-alpha, )"
           },
           "Accord.MachineLearning.GPL": {
+            "target": "Package",
+            "version": "[3.8.2-alpha, )"
+          },
+          "Accord.Neuro": {
             "target": "Package",
             "version": "[3.8.2-alpha, )"
           }

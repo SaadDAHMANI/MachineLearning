@@ -28,3 +28,5 @@ F:\VS19_Apps\MachineLearning\ConsoleApp\bin\Debug\net5.0\Accord.MachineLearning.
 F:\VS19_Apps\MachineLearning\ConsoleApp\bin\Debug\net5.0\Accord.Math.Core.dll
 F:\VS19_Apps\MachineLearning\ConsoleApp\bin\Debug\net5.0\Accord.Math.dll
 F:\VS19_Apps\MachineLearning\ConsoleApp\bin\Debug\net5.0\Accord.Statistics.dll
+F:\VS19_Apps\MachineLearning\ConsoleApp\bin\Debug\net5.0\Accord.Genetic.dll
+F:\VS19_Apps\MachineLearning\ConsoleApp\bin\Debug\net5.0\Accord.Neuro.dll

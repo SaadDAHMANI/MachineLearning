@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Accord.MachineLearning" Version="3.8.2-alpha" />
     <PackageReference Include="Accord.MachineLearning.GPL" Version="3.8.2-alpha" />
+    <PackageReference Include="Accord.Neuro" Version="3.8.2-alpha" />
   </ItemGroup>
 
   <PropertyGroup>

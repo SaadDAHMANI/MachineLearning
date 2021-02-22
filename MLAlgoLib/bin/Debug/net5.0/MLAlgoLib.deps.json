@@ -10,6 +10,7 @@
         "dependencies": {
           "Accord.MachineLearning": "3.8.2-alpha",
           "Accord.MachineLearning.GPL": "3.8.2-alpha",
+          "Accord.Neuro": "3.8.2-alpha",
           "IOOperations": "1.0.0",
           "MonoObjectiveEOALib": "1.0.0"
         },
@@ -20,6 +21,18 @@
       "Accord/3.8.2-alpha": {
         "runtime": {
           "lib/netstandard2.0/Accord.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        }
+      },
+      "Accord.Genetic/3.8.2-alpha": {
+        "dependencies": {
+          "Accord": "3.8.2-alpha",
+          "Accord.Math": "3.8.2-alpha"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Genetic.dll": {
             "assemblyVersion": "3.8.2.0",
             "fileVersion": "3.8.2.6153"
           }
@@ -67,6 +80,19 @@
           }
         }
       },
+      "Accord.Neuro/3.8.2-alpha": {
+        "dependencies": {
+          "Accord": "3.8.2-alpha",
+          "Accord.Genetic": "3.8.2-alpha",
+          "Accord.Math": "3.8.2-alpha"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Neuro.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        }
+      },
       "Accord.Statistics/3.8.2-alpha": {
         "dependencies": {
           "Accord": "3.8.2-alpha",
@@ -104,6 +130,13 @@
       "path": "accord/3.8.2-alpha",
       "hashPath": "accord.3.8.2-alpha.nupkg.sha512"
     },
+    "Accord.Genetic/3.8.2-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I+qtVttoIJqHHTZzrQvGW8msqC2BoDPXptlyrUP1Y7ex4fKcjgjrKvHYQ1vInNQx2WGp2faAVjGI15VKsrOX/w==",
+      "path": "accord.genetic/3.8.2-alpha",
+      "hashPath": "accord.genetic.3.8.2-alpha.nupkg.sha512"
+    },
     "Accord.MachineLearning/3.8.2-alpha": {
       "type": "package",
       "serviceable": true,
@@ -124,6 +157,13 @@
       "sha512": "sha512-derpraljs7QO7U06DzGu1EHNVN+LGM2oA/z3M/zERSWXGs/BVOjMtUBx5WjdMnKXaM0OJiqZFNus3y3C04/H2w==",
       "path": "accord.math/3.8.2-alpha",
       "hashPath": "accord.math.3.8.2-alpha.nupkg.sha512"
+    },
+    "Accord.Neuro/3.8.2-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D721CBg8mZ+5s92KD8pycHWjq6HlwCSOKeqoBKmc5TH4ds5azkRG0xq4Hhia6Wr1jL/buU5smgC91HQspWaTpw==",
+      "path": "accord.neuro/3.8.2-alpha",
+      "hashPath": "accord.neuro.3.8.2-alpha.nupkg.sha512"
     },
     "Accord.Statistics/3.8.2-alpha": {
       "type": "package",

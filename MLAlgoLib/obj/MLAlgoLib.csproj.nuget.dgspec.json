@@ -108,6 +108,10 @@
             "Accord.MachineLearning.GPL": {
               "target": "Package",
               "version": "[3.8.2-alpha, )"
+            },
+            "Accord.Neuro": {
+              "target": "Package",
+              "version": "[3.8.2-alpha, )"
             }
           },
           "imports": [

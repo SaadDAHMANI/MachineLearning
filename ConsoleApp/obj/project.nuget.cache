@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "1RKE94I2w+h1bRRKGtoqOr9CiyTg8Tl6aDoI35ltNTrcqqC5R3EhaGrX9YC+X60E3lR66h51G7EIW300DPlDXA==",
+  "dgSpecHash": "ziKKXUvyeGG2261z/nWB3D9wCugQGxWMjMwwsxc68RN2Iz44+VYnStBzxrJVDu65X3hU5uJDyT81Cm/LNnEv0A==",
   "success": true,
   "projectFilePath": "F:\\VS19_Apps\\MachineLearning\\ConsoleApp\\ConsoleApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SD\\.nuget\\packages\\accord\\3.8.2-alpha\\accord.3.8.2-alpha.nupkg.sha512",
+    "C:\\Users\\SD\\.nuget\\packages\\accord.genetic\\3.8.2-alpha\\accord.genetic.3.8.2-alpha.nupkg.sha512",
     "C:\\Users\\SD\\.nuget\\packages\\accord.machinelearning\\3.8.2-alpha\\accord.machinelearning.3.8.2-alpha.nupkg.sha512",
     "C:\\Users\\SD\\.nuget\\packages\\accord.machinelearning.gpl\\3.8.2-alpha\\accord.machinelearning.gpl.3.8.2-alpha.nupkg.sha512",
     "C:\\Users\\SD\\.nuget\\packages\\accord.math\\3.8.2-alpha\\accord.math.3.8.2-alpha.nupkg.sha512",
+    "C:\\Users\\SD\\.nuget\\packages\\accord.neuro\\3.8.2-alpha\\accord.neuro.3.8.2-alpha.nupkg.sha512",
     "C:\\Users\\SD\\.nuget\\packages\\accord.statistics\\3.8.2-alpha\\accord.statistics.3.8.2-alpha.nupkg.sha512"
   ],
   "logs": []
