@@ -26,8 +26,7 @@ using MLAlgoLib.SupportVectorRegression;
 namespace ConsoleApp
 {
     class Program
-    {
-       
+    {       
 
          static string fileName_DST;
          static DataSerieTD DataSet;
