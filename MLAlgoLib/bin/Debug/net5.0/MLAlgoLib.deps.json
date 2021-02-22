@@ -1,0 +1,146 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "MLAlgoLib/1.0.0": {
+        "dependencies": {
+          "Accord.MachineLearning": "3.8.2-alpha",
+          "Accord.MachineLearning.GPL": "3.8.2-alpha",
+          "IOOperations": "1.0.0",
+          "MonoObjectiveEOALib": "1.0.0"
+        },
+        "runtime": {
+          "MLAlgoLib.dll": {}
+        }
+      },
+      "Accord/3.8.2-alpha": {
+        "runtime": {
+          "lib/netstandard2.0/Accord.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        }
+      },
+      "Accord.MachineLearning/3.8.2-alpha": {
+        "dependencies": {
+          "Accord": "3.8.2-alpha",
+          "Accord.Math": "3.8.2-alpha",
+          "Accord.Statistics": "3.8.2-alpha"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.MachineLearning.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        }
+      },
+      "Accord.MachineLearning.GPL/3.8.2-alpha": {
+        "dependencies": {
+          "Accord": "3.8.2-alpha",
+          "Accord.MachineLearning": "3.8.2-alpha",
+          "Accord.Math": "3.8.2-alpha",
+          "Accord.Statistics": "3.8.2-alpha"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.MachineLearning.GPL.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        }
+      },
+      "Accord.Math/3.8.2-alpha": {
+        "dependencies": {
+          "Accord": "3.8.2-alpha"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Math.Core.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          },
+          "lib/netstandard2.0/Accord.Math.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        }
+      },
+      "Accord.Statistics/3.8.2-alpha": {
+        "dependencies": {
+          "Accord": "3.8.2-alpha",
+          "Accord.Math": "3.8.2-alpha"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Statistics.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        }
+      },
+      "IOOperations/1.0.0": {
+        "runtime": {
+          "IOOperations.dll": {}
+        }
+      },
+      "MonoObjectiveEOALib/1.0.0": {
+        "runtime": {
+          "MonoObjectiveEOALib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MLAlgoLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Accord/3.8.2-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g/EKYGdeMKTMJt7XtB65f+RyVW5ALfU1f1T1dpIGXOqzBtaaNK+OGB6pFY9RFrjKPQNUlnKUWF2jwH5knM+X7A==",
+      "path": "accord/3.8.2-alpha",
+      "hashPath": "accord.3.8.2-alpha.nupkg.sha512"
+    },
+    "Accord.MachineLearning/3.8.2-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jOTabyL1Xu/tCJHWXkEyx+833Gzcb3hVAGy2BbX/XKqBInyta3r4Qe1SFr9PrarPw9zSUamYNKzPr1t3lREq4g==",
+      "path": "accord.machinelearning/3.8.2-alpha",
+      "hashPath": "accord.machinelearning.3.8.2-alpha.nupkg.sha512"
+    },
+    "Accord.MachineLearning.GPL/3.8.2-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mHpSgxMaoL4Sl93RvnWX775bpR9pXw7uMkLrngo4FF5eKeYvQYSqwqaBdEwqooshLoZzqF0ZXUf9253Fby0sAA==",
+      "path": "accord.machinelearning.gpl/3.8.2-alpha",
+      "hashPath": "accord.machinelearning.gpl.3.8.2-alpha.nupkg.sha512"
+    },
+    "Accord.Math/3.8.2-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-derpraljs7QO7U06DzGu1EHNVN+LGM2oA/z3M/zERSWXGs/BVOjMtUBx5WjdMnKXaM0OJiqZFNus3y3C04/H2w==",
+      "path": "accord.math/3.8.2-alpha",
+      "hashPath": "accord.math.3.8.2-alpha.nupkg.sha512"
+    },
+    "Accord.Statistics/3.8.2-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-smQUcRwCGM6apaQrnjpc2Fo07k32bZ6W0r4oaUgftpsHMq8uFLUdMOljuyWddTrgjXFD8Lxkvkngb4nd+LpUwg==",
+      "path": "accord.statistics/3.8.2-alpha",
+      "hashPath": "accord.statistics.3.8.2-alpha.nupkg.sha512"
+    },
+    "IOOperations/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MonoObjectiveEOALib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\IOOperations\IOOperations.csproj" />
+    <ProjectReference Include="..\MonoObjectiveEOALib\MonoObjectiveEOALib.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Accord.MachineLearning" Version="3.8.2-alpha" />
+    <PackageReference Include="Accord.MachineLearning.GPL" Version="3.8.2-alpha" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>

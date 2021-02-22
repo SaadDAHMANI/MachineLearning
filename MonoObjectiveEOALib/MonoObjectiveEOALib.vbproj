@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>MonoObjectiveEOALib</RootNamespace>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Folder_GWO\**" />
+    <EmbeddedResource Remove="Folder_GWO\**" />
+    <None Remove="Folder_GWO\**" />
+  </ItemGroup>
+
+</Project>

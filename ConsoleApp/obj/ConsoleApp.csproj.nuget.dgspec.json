@@ -1,0 +1,261 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\VS19_Apps\\MachineLearning\\ConsoleApp\\ConsoleApp.csproj": {}
+  },
+  "projects": {
+    "F:\\VS19_Apps\\MachineLearning\\ConsoleApp\\ConsoleApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\VS19_Apps\\MachineLearning\\ConsoleApp\\ConsoleApp.csproj",
+        "projectName": "ConsoleApp",
+        "projectPath": "F:\\VS19_Apps\\MachineLearning\\ConsoleApp\\ConsoleApp.csproj",
+        "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
+        "outputPath": "F:\\VS19_Apps\\MachineLearning\\ConsoleApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {
+                "projectPath": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj"
+              },
+              "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj": {
+                "projectPath": "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj"
+              },
+              "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj": {
+                "projectPath": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Accord.MachineLearning": {
+              "target": "Package",
+              "version": "[3.8.2-alpha, )"
+            },
+            "Accord.MachineLearning.GPL": {
+              "target": "Package",
+              "version": "[3.8.2-alpha, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj",
+        "projectName": "IOOperations",
+        "projectPath": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj",
+        "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
+        "outputPath": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj",
+        "projectName": "MLAlgoLib",
+        "projectPath": "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj",
+        "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
+        "outputPath": "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {
+                "projectPath": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj"
+              },
+              "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj": {
+                "projectPath": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Accord.MachineLearning": {
+              "target": "Package",
+              "version": "[3.8.2-alpha, )"
+            },
+            "Accord.MachineLearning.GPL": {
+              "target": "Package",
+              "version": "[3.8.2-alpha, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj",
+        "projectName": "MonoObjectiveEOALib",
+        "projectPath": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj",
+        "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
+        "outputPath": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

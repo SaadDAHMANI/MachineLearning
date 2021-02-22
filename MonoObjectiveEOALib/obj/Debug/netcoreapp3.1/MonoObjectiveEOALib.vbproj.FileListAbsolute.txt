@@ -1,0 +1,8 @@
+G:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\bin\Debug\netcoreapp3.1\MonoObjectiveEOALib.deps.json
+G:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\bin\Debug\netcoreapp3.1\MonoObjectiveEOALib.dll
+G:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\bin\Debug\netcoreapp3.1\MonoObjectiveEOALib.pdb
+G:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\netcoreapp3.1\MonoObjectiveEOALib.AssemblyInfoInputs.cache
+G:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\netcoreapp3.1\MonoObjectiveEOALib.AssemblyInfo.vb
+G:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\netcoreapp3.1\MonoObjectiveEOALib.vbproj.CoreCompileInputs.cache
+G:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\netcoreapp3.1\MonoObjectiveEOALib.dll
+G:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\netcoreapp3.1\MonoObjectiveEOALib.pdb
