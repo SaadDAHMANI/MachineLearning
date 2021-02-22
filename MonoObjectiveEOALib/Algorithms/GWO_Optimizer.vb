@@ -6,10 +6,10 @@ Public Class GWO_Optimizer
     Public Sub New()
     End Sub
 
-    Public Sub New(populationSize As Integer, searchSpaceDimension As Integer, searchSpaceIntervals As List(Of Interval))
+    Public Sub New(populationSize As Integer, searchSpaceDimension As Integer, searchSpaceIntervals As List(Of Range))
         PopulationSize_N = populationSize
         Dimensions_D = searchSpaceDimension
-        SearchIntervals = searchSpaceIntervals
+        SearchRanges = searchSpaceIntervals
         InitializePopulation()
     End Sub
 
@@ -113,7 +113,7 @@ Public Class GWO_Optimizer
         '    ' dans l'explication du script ci-dessous.
 
         '    For j As Integer = 0 To (Dimensions_D - 1)
-        '        positionsList(i)(j) = (Intervalles(j).Max_Value - Intervalles(j).Min_Value) * Rndm.NextDouble() + Intervalles(j).Min_Value
+        '        positionsList(i)(j) = (Intervalles(j).Max - Intervalles(j).Min) * Rndm.NextDouble() + Intervalles(j).Min                                    
         '    Next j
 
         '    objectiveFunctValues(i) = ObjectiveFunction(positionsList(i))
@@ -215,13 +215,13 @@ Public Class GWO_Optimizer
                 ' des limites de la position qui sont autoris�s,
                 ' puis la valeur de retour afin de s'adapter � la limite
                 For j As Integer = 0 To Population(i).Length - 1
-                    If Population(i)(j) < SearchIntervals(j).Min_Value Then
-                        'positionsList(i)(j) = (Intervalles(j).Max_Value - Intervalles(j).Min_Value) * Rndm.NextDouble() + Intervalles(j).Min_Value
-                        Population(i)(j) = SearchIntervals(j).Min_Value
+                    If Population(i)(j) < SearchRanges(j).Min Then
+                        'positionsList(i)(j) = (Intervalles(j).Max - Intervalles(j).Min) * Rndm.NextDouble() + Intervalles(j).Min
+                        Population(i)(j) = SearchRanges(j).Min
 
-                    ElseIf Population(i)(j) > SearchIntervals(j).Max_Value Then
-                        'Population(i)(j) = (Intervalles(j).Max_Value - Intervalles(j).Min_Value) * Rndm.NextDouble() + Intervalles(j).Min_Value
-                        Population(i)(j) = SearchIntervals(j).Max_Value
+                    ElseIf Population(i)(j) > SearchRanges(j).Max Then
+                        'Population(i)(j) = (Intervalles(j).Max - Intervalles(j).Min) * Rndm.NextDouble() + Intervalles(j).Min
+                        Population(i)(j) = SearchRanges(j).Max
 
                     End If
                 Next j
@@ -385,7 +385,7 @@ Public Class GWO_Optimizer
 
     '        '    For j As Integer = 0 To (dimensionD - 1)
 
-    '        '        positionsList(i)(j) = (Intervalles(j).Max_Value - Intervalles(j).Min_Value) * Rndm.NextDouble() + Intervalles(j).Min_Value
+    '        '        positionsList(i)(j) = (Intervalles(j).Max - Intervalles(j).Min) * Rndm.NextDouble() + Intervalles(j).Min
     '        '    Next j
 
     '        '    objectiveFunctValues(i) = ObjectiveFunction(positionsList(i))
@@ -434,13 +434,13 @@ Public Class GWO_Optimizer
     '            ' des limites de la position qui sont autoris�s,
     '            ' puis la valeur de retour afin de s'adapter � la limite
     '            For j As Integer = 0 To positionsList(i).Length - 1
-    '                If positionsList(i)(j) < Intervalles(j).Min_Value Then
+    '                If positionsList(i)(j) < Intervalles(j).Min Then
 
-    '                    positionsList(i)(j) = Intervalles(j).Min_Value
+    '                    positionsList(i)(j) = Intervalles(j).Min
 
-    '                ElseIf positionsList(i)(j) > Intervalles(j).Max_Value Then
+    '                ElseIf positionsList(i)(j) > Intervalles(j).Max Then
 
-    '                    positionsList(i)(j) = Intervalles(j).Max_Value
+    '                    positionsList(i)(j) = Intervalles(j).Max
 
     '                End If
     '            Next j
@@ -847,13 +847,13 @@ End Class
 '                ' des limites de la position qui sont autoris�s,
 '                ' puis la valeur de retour afin de s'adapter � la limite
 '                For j As Integer = 0 To positionsList(i).Length - 1
-'                    If positionsList(i)(j) < Intervalles(j).Min_Value Then
-'                        'positionsList(i)(j) = (Intervalles(j).Max_Value - Intervalles(j).Min_Value) * Rndm.NextDouble() + Intervalles(j).Min_Value
-'                        positionsList(i)(j) = Intervalles(j).Min_Value
+'                    If positionsList(i)(j) < Intervalles(j).Min Then
+'                        'positionsList(i)(j) = (Intervalles(j).Max - Intervalles(j).Min) * Rndm.NextDouble() + Intervalles(j).Min
+'                        positionsList(i)(j) = Intervalles(j).Min
 
-'                    ElseIf positionsList(i)(j) > Intervalles(j).Max_Value Then
-'                        'positionsList(i)(j) = (Intervalles(j).Max_Value - Intervalles(j).Min_Value) * Rndm.NextDouble() + Intervalles(j).Min_Value
-'                        positionsList(i)(j) = Intervalles(j).Max_Value
+'                    ElseIf positionsList(i)(j) > Intervalles(j).Max Then
+'                        'positionsList(i)(j) = (Intervalles(j).Max - Intervalles(j).Min) * Rndm.NextDouble() + Intervalles(j).Min
+'                        positionsList(i)(j) = Intervalles(j).Max
 
 '                    End If
 '                Next j
@@ -1033,7 +1033,7 @@ End Class
 
 '            '    For j As Integer = 0 To (dimensionD - 1)
 
-'            '        positionsList(i)(j) = (Intervalles(j).Max_Value - Intervalles(j).Min_Value) * Rndm.NextDouble() + Intervalles(j).Min_Value
+'            '        positionsList(i)(j) = (Intervalles(j).Max - Intervalles(j).Min) * Rndm.NextDouble() + Intervalles(j).Min
 '            '    Next j
 
 '            '    objectiveFunctValues(i) = ObjectiveFunction(positionsList(i))
@@ -1082,13 +1082,13 @@ End Class
 '                ' des limites de la position qui sont autoris�s,
 '                ' puis la valeur de retour afin de s'adapter � la limite
 '                For j As Integer = 0 To positionsList(i).Length - 1
-'                    If positionsList(i)(j) < Intervalles(j).Min_Value Then
+'                    If positionsList(i)(j) < Intervalles(j).Min Then
 
-'                        positionsList(i)(j) = Intervalles(j).Min_Value
+'                        positionsList(i)(j) = Intervalles(j).Min
 
-'                    ElseIf positionsList(i)(j) > Intervalles(j).Max_Value Then
+'                    ElseIf positionsList(i)(j) > Intervalles(j).Max Then
 
-'                        positionsList(i)(j) = Intervalles(j).Max_Value
+'                        positionsList(i)(j) = Intervalles(j).Max
 
 '                    End If
 '                Next j
@@ -1286,7 +1286,7 @@ End Class
 '            ' dans l'explication du script ci-dessous.
 
 '            For j As Integer = 0 To (dimensionD - 1)
-'                positionsList(i)(j) = (Intervalles(j).Max_Value - Intervalles(j).Min_Value) * Rndm.NextDouble() + Intervalles(j).Min_Value
+'                positionsList(i)(j) = (Intervalles(j).Max - Intervalles(j).Min) * Rndm.NextDouble() + Intervalles(j).Min
 '            Next j
 
 '            objectiveFunctValues(i) = ObjectiveFunction(positionsList(i))

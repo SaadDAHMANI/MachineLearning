@@ -2,7 +2,7 @@
 
     Sub InitializePopulation()
     Sub RunEpoch()
-    Sub LuanchComputation()
+    Sub Compute()
 
     Property Dimensions_D As Integer
     Property PopulationSize_N As Integer
@@ -12,7 +12,7 @@
     ReadOnly Property AlgorithmFullName
 
     Property Population As Double()()
-    Property SearchIntervals As List(Of Interval)
+    Property SearchRanges As List(Of Range)
     Property MaxIterations As Integer
     Property OptimizationType As OptimizationTypeEnum
 

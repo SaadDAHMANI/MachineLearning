@@ -3,10 +3,10 @@
 
     Public Sub New()
     End Sub
-    Public Sub New(populationSize As Integer, searchSpaceDimension As Integer, searchSpaceIntervals As List(Of Interval))
+    Public Sub New(populationSize As Integer, searchSpaceDimension As Integer, searchSpaceIntervals As List(Of Range))
         PopulationSize_N = populationSize
         Dimensions_D = searchSpaceDimension
-        SearchIntervals = searchSpaceIntervals
+        SearchRanges = searchSpaceIntervals
         'InitializePopulation()
     End Sub
     Public Overrides ReadOnly Property AlgorithmName As Object
@@ -166,14 +166,14 @@
             End If
 
             For j = 0 To D
-                If X2(j) < SearchIntervals(j).Min_Value Then
+                If X2(j) < SearchRanges(j).Min Then
                     V(i, j) = -1 * V(i, j)
-                    X2(j) = SearchIntervals(j).Min_Value
+                    X2(j) = SearchRanges(j).Min
                 End If
 
-                If X2(j) > SearchIntervals(j).Max_Value Then
+                If X2(j) > SearchRanges(j).Max Then
                     V(i, j) = -1 * V(i, j)
-                    X2(j) = SearchIntervals(j).Max_Value
+                    X2(j) = SearchRanges(j).Max
                 End If
             Next
 
@@ -208,7 +208,7 @@
     End Sub
 
     Public Overrides Sub InitializeOptimizer()
-        If SearchIntervals.Count < Dimensions_D Then Throw New Exception("Search space intervals must be equal search space dimension.")
+        If SearchRanges.Count < Dimensions_D Then Throw New Exception("Search space intervals must be equal search space dimension.")
 
         _BestChart = New List(Of Double)
         _MeanChart = New List(Of Double)
@@ -227,7 +227,7 @@
         Fnew = New Double(N) {}
 
         For j As Integer = 0 To D
-            W0(j) = (SearchIntervals(j).Max_Value - SearchIntervals(j).Min_Value) / 4
+            W0(j) = (SearchRanges(j).Max - SearchRanges(j).Min) / 4
             Winf(j) = W0(j) / 100
         Next
 

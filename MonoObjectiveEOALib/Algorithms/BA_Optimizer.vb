@@ -17,10 +17,10 @@ Public Class BA_Optimizer
 
     Public Sub New()
     End Sub
-    Public Sub New(populationSize As Integer, searchSpaceDimension As Integer, searchSpaceIntervals As List(Of Interval))
+    Public Sub New(populationSize As Integer, searchSpaceDimension As Integer, searchSpaceIntervals As List(Of Range))
         PopulationSize_N = populationSize
         Dimensions_D = searchSpaceDimension
-        SearchIntervals = searchSpaceIntervals
+        SearchRanges = searchSpaceIntervals
         'InitializePopulation()
     End Sub
 
@@ -202,12 +202,12 @@ Public Class BA_Optimizer
 
             'Apply simple bounds/limits
             For j = 0 To D
-                If Population(i)(j) < SearchIntervals(j).Min_Value Then
-                    Population(i)(j) = SearchIntervals(j).Min_Value '(SearchIntervals(j).Max_Value - SearchIntervals(j).Min_Value) * RandomGenerator.NextDouble() + SearchIntervals(j).Min_Value
+                If Population(i)(j) < SearchRanges(j).Min Then
+                    Population(i)(j) = SearchRanges(j).Min '(SearchRanges(j).Max - SearchRanges(j).Min) * RandomGenerator.NextDouble() + SearchRanges(j).Min
                 End If
 
-                If Population(i)(j) > SearchIntervals(j).Max_Value Then
-                    Population(i)(j) = SearchIntervals(j).Max_Value '(SearchIntervals(j).Max_Value - SearchIntervals(j).Min_Value) * RandomGenerator.NextDouble() + SearchIntervals(j).Min_Value
+                If Population(i)(j) > SearchRanges(j).Max Then
+                    Population(i)(j) = SearchRanges(j).Max '(SearchRanges(j).Max - SearchRanges(j).Min) * RandomGenerator.NextDouble() + SearchRanges(j).Min
                 End If
             Next
 
@@ -284,13 +284,13 @@ Public Class BA_Optimizer
         For i As Integer = 0 To N
 
             For j As Integer = 0 To D
-                If Population(i)(j) > SearchIntervals.Item(j).Max_Value Then
+                If Population(i)(j) > SearchRanges.Item(j).Max Then
                     Tp(j) = 1I
                 Else
                     Tp(j) = 0I
                 End If
 
-                If Population(i)(j) < SearchIntervals.Item(j).Min_Value Then
+                If Population(i)(j) < SearchRanges.Item(j).Min Then
                     Tm(j) = 1I
                 Else
                     Tm(j) = 0I
@@ -311,7 +311,7 @@ Public Class BA_Optimizer
             Next
             '-----------------------------------
             For t = 0 To D
-                randiDimm(t) = (((SearchIntervals.Item(t).Max_Value - SearchIntervals.Item(t).Min_Value) * RandomGenerator.NextDouble()) + SearchIntervals.Item(t).Min_Value) * (Tp(t) + Tm(t))
+                randiDimm(t) = (((SearchRanges.Item(t).Max - SearchRanges.Item(t).Min) * RandomGenerator.NextDouble()) + SearchRanges.Item(t).Min) * (Tp(t) + Tm(t))
 
             Next
 

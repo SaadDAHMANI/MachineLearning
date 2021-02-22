@@ -8,8 +8,7 @@ using Accord.Neuro;
 using Accord.Genetic;
 using Accord.Math.Random;
 using Accord.Neuro.Learning;
-using EvolutionaryAlgorithms;
-using EvolutionaryAlgorithms.GravitationalSearchAlgorithm;
+using MonoObjectiveEOALib;
 
 namespace MLAlgoLib
 {
@@ -57,7 +56,7 @@ namespace ArtificialNeuralNetwork
             }
         }
 
-        private PSOGSAOptimizer Optimizer;
+        private MonoObjectiveEOALib.PSOGSA_Optimizer Optimizer;
 
         public PSOGSA_Learning(ActivationNetwork activationNetwork, int populationSize, int maxIterations, double Go, double alpha, double C1, double C2)
         {
@@ -72,7 +71,9 @@ namespace ArtificialNeuralNetwork
             this.numberOfNetworksWeights = CalculateNetworkSize(activationNetwork);
 
             // population parameters
-            Optimizer = new PSOGSAOptimizer(numberOfNetworksWeights, populationSize, maxIterations);
+            Optimizer = new PSOGSA_Optimizer();
+            Optimizer.PopulationSize_N=populationSize;
+            Optimizer.Dimensions_D= numberOfNetworksWeights;
             Optimizer.OptimizationType = OptimizationTypeEnum.Minimization;
             Optimizer.G0 = Go;
             Optimizer.Alpha = alpha;
@@ -80,15 +81,15 @@ namespace ArtificialNeuralNetwork
             Optimizer.C2 = C2;
            
             // The objective function
-            Optimizer.ObjectiveFunctionComputation += Optimizer_ObjectiveFunctionComputation;
+            Optimizer.ObjectiveFunction += Optimizer_ObjectiveFunction;
 
             // Setting intervalles in [-1,1] 
-            List<Intervalle> intervales = new List<Intervalle>();
+            List<MonoObjectiveEOALib.Range> intervales = new List<MonoObjectiveEOALib.Range>();
             for (int i = 0; i < numberOfNetworksWeights; i++)
             {
-                intervales.Add(new Intervalle(string.Format("Weight{0}", i), -1, 1));
+                intervales.Add(new MonoObjectiveEOALib.Range(string.Format("Weight{0}", i), -1, 1));
             }
-            this.Optimizer.Intervalles = intervales;
+            //this.Optimizer. = intervales;
         }
 
         // Create and initialize genetic population
@@ -112,7 +113,7 @@ namespace ArtificialNeuralNetwork
         }
 
         //Evaluate fitness of solutions (weights in the network)
-        private void Optimizer_ObjectiveFunctionComputation(ref double[] positions, ref double fitnessValue)
+        private void Optimizer_ObjectiveFunction(double[] positions, ref double fitnessValue)
         {
             // The sum of error
             double SumErr = 0;

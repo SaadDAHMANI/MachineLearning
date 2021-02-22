@@ -197,16 +197,16 @@ public class EOSVR
          // Space dimension :must 4.
          int D=4;   
         
-        List<Interval> intervals = new List<Interval>();
-        intervals.Add(new Interval(0.5, 2)); //Sigma of Gaussian
-        intervals.Add(new Interval(90, 500)); // Complexity
-        intervals.Add(new Interval(0.001, 0.001)); // Tolerance        
-        intervals.Add(new Interval(0.001, 0.001)); // Epsilon
+        List<MonoObjectiveEOALib.Range> ranges = new List<MonoObjectiveEOALib.Range>();
+        ranges.Add(new MonoObjectiveEOALib.Range(0.5, 2)); //Sigma of Gaussian
+        ranges.Add(new MonoObjectiveEOALib.Range(90, 500)); // Complexity
+        ranges.Add(new MonoObjectiveEOALib.Range(0.001, 0.001)); // Tolerance        
+       ranges.Add(new MonoObjectiveEOALib.Range(0.001, 0.001)); // Epsilon
 
-        Optimizer= new PSOGSA_Optimizer(PopulationSize,D,intervals,MaxIterations);
+        Optimizer= new PSOGSA_Optimizer(PopulationSize,D,ranges,MaxIterations);
         Optimizer.ObjectiveFunction += Optimizer_ObjectiveFunction;  
 
-        Optimizer.LuanchComputation();        
+        Optimizer.Compute();        
    
         _BestScore=Optimizer.BestScore;    
         _BestSolution=Optimizer.BestSolution;   

@@ -14,7 +14,6 @@ F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObj
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.dll
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\bin\Debug\net5.0\ref\MonoObjectiveEOALib.dll
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.pdb
-F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.vbprojAssemblyReference.cache
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.GeneratedMSBuildEditorConfig.editorconfig
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.AssemblyInfoInputs.cache
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.AssemblyInfo.vb
@@ -22,18 +21,6 @@ F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObj
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.dll
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\net5.0\ref\MonoObjectiveEOALib.dll
 F:\VS19_Apps\EOAlgos_Github\EOAlgos\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.pdb
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.deps.json
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.dll
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\bin\Debug\net5.0\ref\MonoObjectiveEOALib.dll
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.pdb
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.vbprojAssemblyReference.cache
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.GeneratedMSBuildEditorConfig.editorconfig
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.AssemblyInfoInputs.cache
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.AssemblyInfo.vb
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.vbproj.CoreCompileInputs.cache
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.dll
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\obj\Debug\net5.0\ref\MonoObjectiveEOALib.dll
-F:\VS19_Apps\SVM_App\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.pdb
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.deps.json
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.dll
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\bin\Debug\net5.0\ref\MonoObjectiveEOALib.dll
