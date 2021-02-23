@@ -41,7 +41,7 @@ public class EANN_1
             }
             //----------------------------------------------
 
-            public LearningAlgorithmEnum mLearning_Algorithm = LearningAlgorithmEnum.BackPropagationLearning;
+            private LearningAlgorithmEnum mLearning_Algorithm = LearningAlgorithmEnum.BackPropagationLearning;
             public LearningAlgorithmEnum Learning_Algorithm
             {
                 get { return mLearning_Algorithm; }

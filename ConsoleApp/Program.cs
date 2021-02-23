@@ -22,6 +22,7 @@ using Accord.Statistics.Kernels;
 using IOOperations;
 using MLAlgoLib;
 using MLAlgoLib.SupportVectorRegression;
+using MLAlgoLib.ArtificialNeuralNetwork;
 
 namespace ConsoleApp
 {
@@ -153,6 +154,15 @@ namespace ConsoleApp
 
         }
 
+
+        static void TryANN()
+        {
+        EANN eann = new EANN();
+        eann.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
+        
+
+
+        }
 
 
 
