@@ -155,11 +155,11 @@ namespace ConsoleApp
         }
 
 
-        static void TryANN()
+        static void LaunchEANN()
         {
         EANN eann = new EANN();
         eann.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
-        
+
 
 
         }
