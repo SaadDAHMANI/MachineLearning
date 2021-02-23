@@ -17,7 +17,11 @@ namespace ArtificialNeuralNetwork
 public class EANN
 {
 
-     [Category("Learning Algorithm Parameters")] public LearningAlgorithmEnum Learning_Algorithm {get; set;}
+    public EANN()
+    {
+        this.Learning_Algorithm= LearningAlgorithmEnum.LevenbergMarquardtLearning;
+    }
+    [Category("Learning Algorithm Parameters")] public LearningAlgorithmEnum Learning_Algorithm {get; set;}
 
      public Stopwatch Chronos = new Stopwatch();
          long mComputationDuration = 0;
