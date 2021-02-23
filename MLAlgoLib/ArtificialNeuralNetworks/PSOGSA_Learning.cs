@@ -170,7 +170,7 @@ namespace ArtificialNeuralNetwork
 
                 return Optimizer.CurrentBestFitness;
             }
-            catch (Exception ex) { throw ex; }
+            catch (Exception ex) {throw ex; }
 
         }
 
