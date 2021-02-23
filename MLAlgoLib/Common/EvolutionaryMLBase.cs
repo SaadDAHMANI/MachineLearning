@@ -45,6 +45,9 @@ public abstract class EvolutionaryMLBase
      { get {return _PopulationSize;}
        set {_PopulationSize =Math.Max(2, value);}
      }
+     public abstract void LearnEO();
+     public abstract void Learn();
+     public abstract void Compute(double[][] inputs);
 
 }
 }

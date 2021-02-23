@@ -159,8 +159,8 @@ namespace ConsoleApp
         {
         EANN eann = new EANN();
         eann.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
-
-
+        eann.Learn();
+        
 
         }
 

@@ -34,6 +34,26 @@ public class EANN: EvolutionaryMLBase
                   
          }
 
+     DataSerie1D _BestChart; 
+          
+     public DataSerie1D BestChart {get {return _BestChart;}}
+
+       NeuralNetworkEngineEO _BestNeuralNetwork;
+        public NeuralNetworkEngineEO BestNeuralNetwork
+       {get {return _BestNeuralNetwork;}}
+    public override void Learn()
+     {
+        
+     }
+     public override void LearnEO()
+     {
+        
+     }
+      public override void Compute(double[][] inputs)
+     {
+        
+     }
+
 
 
 

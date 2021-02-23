@@ -207,7 +207,7 @@ namespace MLAlgoLib
                 rmse = sum / N;
                 rmse = Math.Sqrt(rmse);
             }
-            catch(Exception ex) { rmse = double.NaN;}
+            catch(Exception ex) { rmse = double.NaN;  throw ex;}
             return rmse;
         }
 
