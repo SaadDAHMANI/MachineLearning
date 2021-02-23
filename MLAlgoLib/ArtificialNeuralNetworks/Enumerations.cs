@@ -4,7 +4,7 @@
 namespace ArtificialNeuralNetwork
 {
 
- public enum ActivationFunctionEnum
+     public enum ActivationFunctionEnum
         {
             LinearFunction = 0,
             SigmoidFunction = 1,
@@ -13,7 +13,7 @@ namespace ArtificialNeuralNetwork
 
         }
 
-        public enum LearningAlgorithmEnum
+     public enum LearningAlgorithmEnum
         {
             BackPropagationLearning = 0,
             LevenbergMarquardtLearning = 1,
@@ -24,6 +24,14 @@ namespace ArtificialNeuralNetwork
             HPSOGWO_Learning = 6,
             mHPSOGWO_Learning = 7,
                 PSOGSA_Learning=8
+        }
+
+      public enum OptimizationAlogrithmEnum
+        {
+            GA_Optimizer = 0,
+            GSA_Optimizer = 1,
+            GWO__Optimizer = 2,
+            HPSOGWO_Optimizer = 3
         }
 }
 }
