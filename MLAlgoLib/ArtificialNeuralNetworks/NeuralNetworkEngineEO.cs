@@ -115,7 +115,14 @@ namespace ArtificialNeuralNetwork
                     //if (object.Equals(networkStruct, null)) { networkStruct = GetLayersStruct(LayersStruct); }
 
                     if (Equals(networkStruct, null)) { return; }
+
                     if (ANN_InputsCount==-1 | ANN_OuputsCount==-1) { return; }
+
+                    if (Equals(ActiveFunction_Params, null)) { throw new Exception("No activation function parameterss are specified !!!"); }
+                    if (ActiveFunction_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
+
+
+                    if (Equals(LearningAlgorithm_Params, null)) { throw new Exception("No learning algorithm parameters are specified !!!"); }
 
                     // create neural network
                     // Network = new ActivationNetwork(new SigmoidFunction(1),mInputsCount, networkStruct);
@@ -127,6 +134,7 @@ namespace ArtificialNeuralNetwork
                     switch (ActivationFunction)
                     {
                         case ActivationFunctionEnum.LinearFunction:
+                           
                             Network = new ActivationNetwork(new LinearFunction(ActiveFunction_Params[0]), ANN_InputsCount, networkStruct);
                             break;
 
@@ -153,22 +161,29 @@ namespace ArtificialNeuralNetwork
                     switch (LearningAlgorithm)
                     {
                         case LearningAlgorithmEnum.BackPropagationLearning:
+                            if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
+
                             teacher = new BackPropagationLearning(Network);
-                            var teacherBP = (BackPropagationLearning)teacher;
-                            teacherBP.LearningRate = this.LearningRate;
+                                                        var teacherBP = (BackPropagationLearning)teacher;
+                            teacherBP.LearningRate = LearningAlgorithm_Params[0];
                             teacher = teacherBP; 
                             break;
 
                         case LearningAlgorithmEnum.LevenbergMarquardtLearning:
+                            if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
+
                             teacher = new LevenbergMarquardtLearning(Network);
                             var teacherLM = (LevenbergMarquardtLearning)teacher;
-                            teacherLM.LearningRate=this.LearningRate;
+                            teacherLM.LearningRate= LearningAlgorithm_Params[0];
                             teacher = teacherLM;
                             break;
 
                         case LearningAlgorithmEnum.EvolutionaryLearningGA:
-                            teacher = new EvolutionaryLearning(Network, EOA_PopulationSize) ;
+                            if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
 
+                            teacher = new EvolutionaryLearning(Network, (int)LearningAlgorithm_Params[0]);
+                            var teacherEGA = (EvolutionaryLearning)teacher;
+                             
                             break;
                         case LearningAlgorithmEnum.RGA_Learning:
                             throw new NotImplementedException();
@@ -423,11 +438,7 @@ namespace ArtificialNeuralNetwork
                 catch(Exception ex){ throw ex; }
                 return resultEoNet;
             }
-            /// <summary>
-            /// The value determines speed of learning. Default value is 0.1. 
-            /// </summary>
-            [Category("Shared BP & LM Parameters")] public double LearningRate { get; set; } = 0.1;
-
+            
             [Category("EOAs Shared Parameters")] public int EOA_PopulationSize { get; set; } = 15;
            
             #region GSA_Params
