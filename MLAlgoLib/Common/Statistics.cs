@@ -595,6 +595,7 @@ namespace MLAlgoLib
             d= Math.Min(d, 12);
             return string.Format("MAE={0} | RMSE= {1} | R={2} | R2={3} | Nash={4}.", Math.Round(MAE, d), Math.Round(RMSE,d),Math.Round(R,d), Math.Round(R2,d), Math.Round(Nash,d));
         }
+       
 
     }
 }

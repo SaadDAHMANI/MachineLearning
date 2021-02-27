@@ -32,7 +32,6 @@ namespace MLAlgoLib
         public double[] TrainingOutput
         { get { return _TrainingOutput;}}
 
-
         private double[][] _TestingInput;
         public double[][] TestingInput
         { get { return _TestingInput; } }
@@ -42,9 +41,8 @@ namespace MLAlgoLib
         { get { return _TestingOutput; } }
 
 
-
         public void Format(int targetColumnIndex, params int[] modelInputColumns)
- {
+        {
              if(_TrainingPourcentage<=0){ return;}
             if(Equals(DataSet,null)){return;}
             if(Equals(DataSet.Data, null)){return;}
@@ -68,7 +66,21 @@ namespace MLAlgoLib
             _TestingOutput = targetCol.TakeLast((rowCount - trainRowCount)).ToArray();
                           
  }
+        public static double[][] ConvertToJagged(double[] vector)
+        {
+            if (Equals(vector, null)) { return null; }
 
-}
+            double[][] matrix = new double[vector.Length][];
+
+            for (int i = 0; i < vector.Length; i++)
+            {
+                matrix[i] = new double[] { vector[i] };
+            }
+
+            return matrix;
+        }
+
+
+    }
 }
 

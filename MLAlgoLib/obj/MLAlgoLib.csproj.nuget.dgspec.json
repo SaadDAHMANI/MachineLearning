@@ -82,8 +82,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {
-                "projectPath": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj"
+              "F:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj": {
+                "projectPath": "F:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj"
               },
               "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj": {
                 "projectPath": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj"

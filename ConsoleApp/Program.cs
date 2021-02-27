@@ -35,7 +35,18 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-             Console.WriteLine("Hello SVR!");
+            double[] vectorIn = new double[] { 1, 2, 3, 4 };
+            double[][] matrixOut = new double[][]
+            {
+                new double[]{1},
+                new double[]{2},
+                new double[]{3},
+                new double[]{4}
+            };
+
+            Console.WriteLine(matrixOut[0].Length);
+
+            Console.WriteLine("Hello SVR!");
 
              //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Ex.csv";
              //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Exemple.csv";
@@ -69,7 +80,7 @@ namespace ConsoleApp
              int n=2;
              int kmax=2;
 
-             LaunchEOSVR(n,kmax);
+            // LaunchEOSVR(n,kmax);
 
 
         }
