@@ -32,6 +32,12 @@ namespace ArtificialNeuralNetwork
 
             [Category("Learning Algorithm Parameters")] public LearningAlgorithmEnum LearningAlgorithm { get; set; }
 
+            /// <summary>
+            /// The array of parameters must be set in this order according to the learning algorithm. 
+            /// - BackPropagationLearning -> 02 parameters : LearningRate (default = 0.1), Momentum (default = 0.0).
+            /// - EvolutionaryLearning -> 02 parameters :  PopulationSize_N, MaxIteration
+            /// - PSOGSA_Learning -> 06 parameters : PopulationSize_N, MaxIteration, G0, Alpha, C1, C2. 
+            /// </summary>
             [Category("Learning Algorithm Parameters")] public double[] LearningAlgorithm_Params { get; set; }
             int IterationCounter = 0;
             public int FinalIterationsCount
@@ -164,8 +170,9 @@ namespace ArtificialNeuralNetwork
                             if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
 
                             teacher = new BackPropagationLearning(Network);
-                                                        var teacherBP = (BackPropagationLearning)teacher;
+                            var teacherBP = (BackPropagationLearning)teacher;
                             teacherBP.LearningRate = LearningAlgorithm_Params[0];
+                            teacherBP.Momentum = LearningAlgorithm_Params[1];
                             teacher = teacherBP; 
                             break;
 
@@ -183,7 +190,7 @@ namespace ArtificialNeuralNetwork
 
                             teacher = new EvolutionaryLearning(Network, (int)LearningAlgorithm_Params[0]);
                             var teacherEGA = (EvolutionaryLearning)teacher;
-                             
+                            
                             break;
                         case LearningAlgorithmEnum.RGA_Learning:
                             throw new NotImplementedException();
@@ -208,7 +215,10 @@ namespace ArtificialNeuralNetwork
                             //teacher = new HPSOGWO_Learning(Network, EOA_PopulationSize, MaxIteration, HPSOGWO_C1, HPSOGWO_C2, HPSOGWO_C3);
                             break;
                         case LearningAlgorithmEnum.PSOGSA_Learning:
-                            teacher = new PSOGSA_Learning(Network, EOA_PopulationSize, MaxIteration,PSOGSA_Go,PSOGSA_Alpha,PSOGSA_C1,PSOGSA_C2);
+                            if (Equals(LearningAlgorithm_Params, null)) {throw new Exception("No activation function parameterss are specified!!!");}
+                            if (LearningAlgorithm_Params.Length < 6) { throw new Exception("No activation function parameterss are specified!!!"); }
+
+                            teacher = new PSOGSA_Learning(Network, (int)LearningAlgorithm_Params[0], (int)LearningAlgorithm_Params[1], (int)LearningAlgorithm_Params[2], (int)LearningAlgorithm_Params[3], (int)LearningAlgorithm_Params[4], (int)LearningAlgorithm_Params[5]);
                             break;
                             
                     }
@@ -233,7 +243,6 @@ namespace ArtificialNeuralNetwork
                         {
                             needToStop = true;
                         }
-
                     }
 
                     FinalTeachingErr = error;

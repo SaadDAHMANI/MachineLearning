@@ -82,7 +82,7 @@ public class EANN: EvolutionaryMLBase
                 _BestNeuralNetwork.LayersStruct = GetLayersStruct(hidenLayerStructure, this.LearningInputs[0].Length, 1);
 
                 _BestNeuralNetwork.ActivationFunction = DefaultActivationFunction;
-                _BestNeuralNetwork.ActiveFunction_Alpha = DefaultActiveFunction_Params;
+                _BestNeuralNetwork.LearningAlgorithm_Params = DefaultActiveFunction_Params;
             }
 
             public override void Learn()
