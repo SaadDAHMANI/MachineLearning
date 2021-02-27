@@ -20,11 +20,17 @@ public class EANN: EvolutionaryMLBase
     {
         this.Chronos = new Stopwatch();
         this.Learning_Algorithm= LearningAlgorithmEnum.LevenbergMarquardtLearning;
+                this.DefaultActivationFunction = ActivationFunctionEnum.SigmoidFunction;
 
     }
     [Category("Learning Algorithm Parameters")] public LearningAlgorithmEnum Learning_Algorithm {get; set;}
 
-     private Stopwatch Chronos;
+            /// <summary>
+            /// The Defaullt is set to Sigmoid Function.
+            /// </summary>
+            [Category("Learning Algorithm Parameters")] public ActivationFunctionEnum DefaultActivationFunction { get; set; }
+
+            private Stopwatch Chronos;
      public long ComputationDuration
          {
              get {if (!Equals(Chronos, null))
@@ -33,6 +39,7 @@ public class EANN: EvolutionaryMLBase
               }
                   
          }
+
 
      DataSerie1D _BestChart; 
           
@@ -73,6 +80,7 @@ public class EANN: EvolutionaryMLBase
                 /// Step 2 : set ANN's structure-
                 _BestNeuralNetwork.LayersStruct = GetLayersStruct(hidenLayerStructure, this.LearningInputs[0].Length, 1);
      
+                _BestNeuralNetwork.ActivationFunction= 
             }
 
             public override void Learn()
