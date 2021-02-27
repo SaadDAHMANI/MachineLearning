@@ -439,7 +439,6 @@ namespace ArtificialNeuralNetwork
                 return resultEoNet;
             }
             
-            [Category("EOAs Shared Parameters")] public int EOA_PopulationSize { get; set; } = 15;
            
             #region GSA_Params
             [Category("GSA_Parameters")] public double GSA_Alpha { get; set; } = 20;                    
