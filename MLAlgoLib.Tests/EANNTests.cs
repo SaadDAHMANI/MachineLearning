@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using MLAlgoLib.ArtificialNeuralNetwork;
+using IOOperations;
 
 namespace MLAlgoLib.Tests
 {
@@ -47,6 +48,18 @@ namespace MLAlgoLib.Tests
             vectorIn = null;
             Assert.Equal(null, EANN.ConvertToJagged(vectorIn));
 
+        }
+
+        [Fact]
+        public void GetLayersStructTest1()
+        {
+            DataSerie1D hidenLayersStruct = new DataSerie1D();
+            hidenLayersStruct.Add("HL1", 4);
+            hidenLayersStruct.Add("HL2", 5);
+            hidenLayersStruct.Add("HL3", 2);
+            int inp = 2;
+             int[] AnnStruct = new int[] { 4, 5, 2, 1 };
+            Assert.Equal(AnnStruct, _tst.GetLayersStruct(hidenLayersStruct, inp, 1));
         }
 
 

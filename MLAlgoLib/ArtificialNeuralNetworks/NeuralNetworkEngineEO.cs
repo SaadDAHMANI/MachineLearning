@@ -75,7 +75,7 @@ namespace ArtificialNeuralNetwork
             public int OuputsCount
             {
                 get { 
-                    if (Equals(mTraining_Outputs, null)) { return 1; }
+                    if (Equals(mTraining_Outputs, null)) { return -1; }
                     else { return mTraining_Outputs[0].Length;}
                    
                 }

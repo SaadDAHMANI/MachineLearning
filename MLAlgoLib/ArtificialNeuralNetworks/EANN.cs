@@ -54,17 +54,23 @@ public class EANN: EvolutionaryMLBase
                 return true;
             }
 
+            /// <summary>
+            /// The data must be standarize before learning.
+            /// </summary>
+            /// <param name="hidenLayerStructure"></param>
     public void Learn(DataSerie1D hidenLayerStructure )
      {
-      
-                if (CheckData() == false) { return                                                                                 _è}
+                // Step 0 : Check data
+                if (CheckData() == false) { return; }
                 _BestNeuralNetwork = new NeuralNetworkEngineEO();
 
                 // Step 1 : Standerize Data and get Input data;
-
+                //------------------------------------------------
 
                 _BestNeuralNetwork.Training_Inputs = this.LearningInputs;
                 _BestNeuralNetwork.Training_Outputs = ConvertToJagged(this.LearningOutputs);
+
+                /// Step 2 : set ANN's structure-
                 _BestNeuralNetwork.LayersStruct = GetLayersStruct(hidenLayerStructure, this.LearningInputs[0].Length, 1);
      
             }
@@ -97,12 +103,12 @@ public class EANN: EvolutionaryMLBase
                 return matrix;
             }
 
-            private int[] GetLayersStruct(DataSerie1D ds1, int inputsCount, int ouputsCount)
+           public int[] GetLayersStruct(DataSerie1D hidenLayersStructure, int inputsCount, int ouputsCount)
             {
                 int iCount = 2;
                 int[] result = null;
 
-                if ((object.Equals(ds1, null)) || (object.Equals(ds1.Data, null)))
+                if ((object.Equals(hidenLayersStructure, null)) || (object.Equals(hidenLayersStructure.Data, null)))
                 {
                     result = new int[iCount];
                     result[0] = inputsCount;
@@ -110,13 +116,13 @@ public class EANN: EvolutionaryMLBase
                 }
                 else
                 {
-                    iCount = ds1.Data.Count + 1;
+                    iCount = hidenLayersStructure.Data.Count + 1;
 
                     result = new int[iCount];
 
                     for (int i = 0; i < (iCount - 1); i++)
                     {
-                        result[i] = (Int32)Math.Round(ds1.Data[i].X_Value, 0);
+                        result[i] = (Int32)Math.Round(hidenLayersStructure.Data[i].X_Value, 0);
                     }
 
                     result[(iCount - 1)] = ouputsCount;
