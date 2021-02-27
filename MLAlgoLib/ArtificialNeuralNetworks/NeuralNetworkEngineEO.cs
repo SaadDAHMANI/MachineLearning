@@ -35,6 +35,8 @@ namespace ArtificialNeuralNetwork
             /// <summary>
             /// The array of parameters must be set in this order according to the learning algorithm. 
             /// - BackPropagationLearning -> 02 parameters : LearningRate (default = 0.1), Momentum (default = 0.0).
+            /// - LevenbergMarquardtLearning -> 02 parameters : LearningRate (default = 0.1), Adjustment (default = 10.0).
+            /// - BayesianLevenbergMarquardtLearning-> 04 parameters : LearningRate (default = 0.1), Adjustment (default = 10.0), Alpha, Beta.
             /// - EvolutionaryLearning -> 02 parameters :  PopulationSize_N, MaxIteration
             /// - PSOGSA_Learning -> 06 parameters : PopulationSize_N, MaxIteration, G0, Alpha, C1, C2. 
             /// </summary>
@@ -167,7 +169,7 @@ namespace ArtificialNeuralNetwork
                     switch (LearningAlgorithm)
                     {
                         case LearningAlgorithmEnum.BackPropagationLearning:
-                            if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
+                            if (LearningAlgorithm_Params.Length < 2) { throw new Exception("No activation function parameterss are specified !!!"); }
 
                             teacher = new BackPropagationLearning(Network);
                             var teacherBP = (BackPropagationLearning)teacher;
@@ -177,23 +179,28 @@ namespace ArtificialNeuralNetwork
                             break;
 
                         case LearningAlgorithmEnum.LevenbergMarquardtLearning:
-                            if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
-
+                            if (LearningAlgorithm_Params.Length < 2) { throw new Exception("No activation function parameterss are specified !!!"); }
                             teacher = new LevenbergMarquardtLearning(Network);
                             var teacherLM = (LevenbergMarquardtLearning)teacher;
                             teacherLM.LearningRate= LearningAlgorithm_Params[0];
+                            teacherLM.Adjustment = LearningAlgorithm_Params[1];
+                            teacherLM.UseRegularization = false;
+                            
                             teacher = teacherLM;
                             break;
 
                         case LearningAlgorithmEnum.BayesianLevenbergMarquardtLearning:
+                            throw new NotImplementedException("");
 
-                            if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
+                            if (LearningAlgorithm_Params.Length < 4) { throw new Exception("No activation function parameterss are specified !!!"); }
 
                             teacher = new LevenbergMarquardtLearning(Network);
                             var teacherBLM = (LevenbergMarquardtLearning)teacher;
                             teacherBLM.UseRegularization = true;
                             teacherBLM.LearningRate = LearningAlgorithm_Params[0];
-
+                            teacherBLM.Adjustment = LearningAlgorithm_Params[1];
+                            teacherBLM.Alpha = LearningAlgorithm_Params[2];
+                            teacherBLM.Beta = LearningAlgorithm_Params[3];
                             teacher = teacherBLM;
                             break;
                         case LearningAlgorithmEnum.EvolutionaryLearningGA:
