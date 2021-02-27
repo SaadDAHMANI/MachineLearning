@@ -185,6 +185,17 @@ namespace ArtificialNeuralNetwork
                             teacher = teacherLM;
                             break;
 
+                        case LearningAlgorithmEnum.BayesianLevenbergMarquardtLearning:
+
+                            if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
+
+                            teacher = new LevenbergMarquardtLearning(Network);
+                            var teacherBLM = (LevenbergMarquardtLearning)teacher;
+                            teacherBLM.UseRegularization = true;
+                            teacherBLM.LearningRate = LearningAlgorithm_Params[0];
+
+                            teacher = teacherBLM;
+                            break;
                         case LearningAlgorithmEnum.EvolutionaryLearningGA:
                             if (LearningAlgorithm_Params.Length < 1) { throw new Exception("No activation function parameterss are specified !!!"); }
 

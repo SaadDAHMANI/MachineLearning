@@ -23,7 +23,8 @@ namespace ArtificialNeuralNetwork
             GWO_Learning = 5,
             HPSOGWO_Learning = 6,
             mHPSOGWO_Learning = 7,
-                PSOGSA_Learning=8
+                PSOGSA_Learning=8,
+            BayesianLevenbergMarquardtLearning = 9
         }
 
       public enum OptimizationAlogrithmEnum
