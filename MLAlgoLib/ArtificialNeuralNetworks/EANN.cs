@@ -44,10 +44,25 @@ public class EANN: EvolutionaryMLBase
        NeuralNetworkEngineEO _BestNeuralNetwork;
         public NeuralNetworkEngineEO BestNeuralNetwork
        {get {return _BestNeuralNetwork;}}
+
+            private bool CheckData()
+            {
+                if (Equals(this.LearningInputs, null)){ return false;}
+                if (Equals(this.LearningOutputs, null)) { return false;}
+                if (Equals(this.TestingInputs, null)) { return false; }
+                if (Equals(this.TestingOutputs, null)) { return false; }
+                return true;
+            }
+
     public void Learn(DataSerie1D hidenLayerStructure )
      {
-
+      
+                if (CheckData() == false) { return                                                                                 _è}
                 _BestNeuralNetwork = new NeuralNetworkEngineEO();
+
+                // Step 1 : Standerize Data and get Input data;
+
+
                 _BestNeuralNetwork.Training_Inputs = this.LearningInputs;
                 _BestNeuralNetwork.Training_Outputs = ConvertToJagged(this.LearningOutputs);
                 _BestNeuralNetwork.LayersStruct = GetLayersStruct(hidenLayerStructure, this.LearningInputs[0].Length, 1);
