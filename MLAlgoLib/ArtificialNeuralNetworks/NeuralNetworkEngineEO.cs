@@ -440,35 +440,6 @@ namespace ArtificialNeuralNetwork
             }
             
            
-            #region GSA_Params
-            [Category("GSA_Parameters")] public double GSA_Alpha { get; set; } = 20;                    
-            [Category("GSA_Parameters")] public double GSA_Go { get; set; } = 100;
-             #endregion
-
-            #region HPSOGWO_Params
-                       
-            [Category("HPSOGWO_Parameters")] public double HPSOGWO_C1 { get; set; } = 0.5;           
-            [Category("HPSOGWO_Parameters")] public double HPSOGWO_C2 { get; set; } = 0.5;
-            [Category("HPSOGWO_Parameters")] public double HPSOGWO_C3 { get; set; } = 0.5;
-           
-            #endregion
-
-            #region RGA_Params
-            [Category("RGA_Parameters")] public float RGA_MutationPhrequency { get; set; } = 0.05f;
-            #endregion
-
-            #region GWO_Params
-            //[Category("GWO_Parameters")] public GWOVersionEnum GWO_Version { get; set; }=GWOVersionEnum.StandardGWO;
-            //[Category("GWO_Parameters")] public double IGWO_uParameter { get; set; } = 1.1;
-            #endregion
-
-            #region PSOGSA_Params
-            [Category("PSOGSA_Parameters")] public double PSOGSA_C1 { get; set; } = 0.5;
-            [Category("PSOGSA_Parameters")] public double PSOGSA_C2 { get; set; } = 1.5;
-            [Category("PSOGSA_Parameters")] public double PSOGSA_Alpha { get; set; } = 23;
-            [Category("PSOGSA_Parameters")] public double PSOGSA_Go { get; set; } = 1;
-            #endregion
-
         }
 
 
