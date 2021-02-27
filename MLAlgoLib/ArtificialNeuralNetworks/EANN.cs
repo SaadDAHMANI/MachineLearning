@@ -30,6 +30,7 @@ public class EANN: EvolutionaryMLBase
             /// </summary>
             [Category("Learning Algorithm Parameters")] public ActivationFunctionEnum DefaultActivationFunction { get; set; }
 
+            [Category("Learning Algorithm Parameters")] public double[] DefaultActiveFunction_Params { get; set;}
             private Stopwatch Chronos;
      public long ComputationDuration
          {
@@ -77,10 +78,11 @@ public class EANN: EvolutionaryMLBase
                 _BestNeuralNetwork.Training_Inputs = this.LearningInputs;
                 _BestNeuralNetwork.Training_Outputs = ConvertToJagged(this.LearningOutputs);
 
-                /// Step 2 : set ANN's structure-
+                /// Step 2 : set ANN's structure, activation function, 
                 _BestNeuralNetwork.LayersStruct = GetLayersStruct(hidenLayerStructure, this.LearningInputs[0].Length, 1);
-     
-                _BestNeuralNetwork.ActivationFunction= 
+
+                _BestNeuralNetwork.ActivationFunction = DefaultActivationFunction;
+                _BestNeuralNetwork.ActiveFunction_Alpha = DefaultActiveFunction_Params;
             }
 
             public override void Learn()

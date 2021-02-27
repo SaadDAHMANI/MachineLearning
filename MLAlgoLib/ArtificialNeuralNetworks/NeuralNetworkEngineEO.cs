@@ -16,7 +16,7 @@ namespace MLAlgoLib
 namespace ArtificialNeuralNetwork
 {
 
- [Serializable]
+        [Serializable]
         public class NeuralNetworkEngineEO
         {
 
@@ -24,19 +24,14 @@ namespace ArtificialNeuralNetwork
             /// The Activation Function.
             /// </summary>
             [Category("Activation Function Parameters")] public ActivationFunctionEnum ActivationFunction { get; set; }
-                     
+
             /// <summary>
             /// Alpha parameter for activation function (Sigmoid, Bipolar sigmoid, ...etc.)
             /// </summary>
-            [Category("Activation Function Parameters")] public double ActiveFunction_Alpha { get; set; } = 2;
+            [Category("Activation Function Parameters")] public double[] ActiveFunction_Params { get; set;}
                        
             [Category("Learning Algorithm Parameters")] public LearningAlgorithmEnum LearningAlgorithm { get; set; }
-            
-             /// <summary>
-            /// The additional parameter of Learning Algorithm.
-            /// </summary>
-            [Category("Learning Algorithm Parameters")] public int LearningAlgorithmParam { get; set; } = 1;
-           
+                         
             int IterationCounter = 0;
             public int FinalIterationsCount
             {
