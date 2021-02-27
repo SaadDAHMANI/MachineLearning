@@ -63,7 +63,7 @@ namespace ArtificialNeuralNetwork
                 set { mTeachingError = value; }
             }
           
-            public int InputsCount
+            public int ANN_InputsCount
             {
                 get { 
                     if (Equals(mTraining_Inputs, null)) { return -1; }
@@ -72,7 +72,7 @@ namespace ArtificialNeuralNetwork
                 }
              }
 
-            public int OuputsCount
+            public int ANN_OuputsCount
             {
                 get { 
                     if (Equals(mTraining_Outputs, null)) { return -1; }
@@ -119,6 +119,7 @@ namespace ArtificialNeuralNetwork
                     //if (object.Equals(networkStruct, null)) { networkStruct = GetLayersStruct(LayersStruct); }
 
                     if (Equals(networkStruct, null)) { return; }
+                    if (ANN_InputsCount==-1 | ANN_OuputsCount==-1) { return; }
 
                     // create neural network
                     // Network = new ActivationNetwork(new SigmoidFunction(1),mInputsCount, networkStruct);
@@ -130,18 +131,18 @@ namespace ArtificialNeuralNetwork
                     switch (ActivationFunction)
                     {
                         case ActivationFunctionEnum.LinearFunction:
-                            Network = new ActivationNetwork(new LinearFunction(ActiveFunction_Alpha), InputsCount, networkStruct);
+                            Network = new ActivationNetwork(new LinearFunction(ActiveFunction_Alpha), ANN_InputsCount, networkStruct);
                             break;
 
                         case ActivationFunctionEnum.SigmoidFunction:
-                            Network = new ActivationNetwork(new SigmoidFunction(ActiveFunction_Alpha), InputsCount, networkStruct);
+                            Network = new ActivationNetwork(new SigmoidFunction(ActiveFunction_Alpha), ANN_InputsCount, networkStruct);
                             break;
                         case ActivationFunctionEnum.BipolarSigmoidFunction:
-                            Network = new ActivationNetwork(new BipolarSigmoidFunction(ActiveFunction_Alpha), InputsCount, networkStruct);
+                            Network = new ActivationNetwork(new BipolarSigmoidFunction(ActiveFunction_Alpha), ANN_InputsCount, networkStruct);
                             break;
 
                         default:
-                            Network = new ActivationNetwork(new SigmoidFunction(ActiveFunction_Alpha), InputsCount, networkStruct);
+                            Network = new ActivationNetwork(new SigmoidFunction(ActiveFunction_Alpha), ANN_InputsCount, networkStruct);
                             break;
 
                     }
