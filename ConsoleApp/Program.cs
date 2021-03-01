@@ -35,15 +35,7 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-            double[] vectorIn = new double[] { 1, 2, 3, 4 };
-            double[][] matrixOut = new double[][]
-            {
-                new double[]{1},
-                new double[]{2},
-                new double[]{3},
-                new double[]{4}
-            };
-
+           
             Console.WriteLine(matrixOut[0].Length);
 
             Console.WriteLine("Hello SVR!");
@@ -168,7 +160,17 @@ namespace ConsoleApp
 
         static void LaunchEANN()
         {
-        EANN eann = new EANN();
+            double[] vectorIn = new double[] { 0.1, 0.2, 0.3, 0.4 };
+            double[][] matrixOut = new double[][]
+            {
+                new double[]{0.1},
+                new double[]{0.2},
+                new double[]{0.3},
+                new double[]{0.4}
+            };
+
+            EANN eann = new EANN(df.TrainingInput, df.TrainingOutput, df.TestingInput, df.TestingOutput);
+           
         eann.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
         eann.Learn();
         

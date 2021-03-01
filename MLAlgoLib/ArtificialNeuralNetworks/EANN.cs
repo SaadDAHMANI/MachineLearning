@@ -18,12 +18,24 @@ public class EANN: EvolutionaryMLBase
 {
     public EANN()
     {
-        this.Chronos = new Stopwatch();
-        this.Learning_Algorithm= LearningAlgorithmEnum.LevenbergMarquardtLearning;
-                this.DefaultActivationFunction = ActivationFunctionEnum.SigmoidFunction;
-
+       this.Chronos = new Stopwatch();
+       this.Learning_Algorithm= LearningAlgorithmEnum.LevenbergMarquardtLearning;
+       this.DefaultActivationFunction = ActivationFunctionEnum.SigmoidFunction;
     }
-    [Category("Learning Algorithm Parameters")] public LearningAlgorithmEnum Learning_Algorithm {get; set;}
+
+    public EANN(double[][] trainingIn, double[] trainingOut, double[][] testingIn, double[] testingOut)
+     {
+      this.Chronos = new Stopwatch();
+      this.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
+      this.DefaultActivationFunction = ActivationFunctionEnum.SigmoidFunction;
+                this.LearningInputs = trainingIn;
+                this.LearningOutputs = trainingOut;
+                this.TestingInputs = testingIn;
+                this.TestingOutputs = testingOut;
+     }
+
+
+     [Category("Learning Algorithm Parameters")] public LearningAlgorithmEnum Learning_Algorithm {get; set;}
 
             /// <summary>
             /// The Defaullt is set to Sigmoid Function.
@@ -84,7 +96,7 @@ public class EANN: EvolutionaryMLBase
                 _BestNeuralNetwork.ActivationFunction = DefaultActivationFunction;
                 _BestNeuralNetwork.LearningAlgorithm_Params = DefaultActiveFunction_Params;
 
-                _BestNeuralNetwork.LuanchLearning();
+                _BestNeuralNetwork.Learn();
                 
             }
 
