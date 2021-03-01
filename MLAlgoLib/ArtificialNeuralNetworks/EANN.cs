@@ -84,7 +84,7 @@ public class EANN: EvolutionaryMLBase
                 _BestNeuralNetwork.ActivationFunction = DefaultActivationFunction;
                 _BestNeuralNetwork.LearningAlgorithm_Params = DefaultActiveFunction_Params;
 
-                _BestNeuralNetwork.LearningMaxIterations= 10;
+                _BestNeuralNetwork.LuanchLearning();
                 
             }
 

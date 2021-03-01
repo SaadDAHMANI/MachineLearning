@@ -123,7 +123,7 @@ namespace ArtificialNeuralNetwork
             public double[] Best_Weights
             { get { return BestWeights; } }
 
-            public void LuanchLearning()
+            public void Learn()
             {
                 try
                 {
