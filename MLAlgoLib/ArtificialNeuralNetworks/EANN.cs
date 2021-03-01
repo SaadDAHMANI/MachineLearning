@@ -23,7 +23,16 @@ public class EANN: EvolutionaryMLBase
        this.DefaultActivationFunction = ActivationFunctionEnum.SigmoidFunction;
     }
 
-    public EANN(double[][] trainingIn, double[] trainingOut, double[][] testingIn, double[] testingOut)
+     public EANN(double[][] trainingIn, double[] trainingOut)
+      {
+                this.Chronos = new Stopwatch();
+                this.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
+                this.DefaultActivationFunction = ActivationFunctionEnum.SigmoidFunction;
+                this.LearningInputs = trainingIn;
+                this.LearningOutputs = trainingOut;
+      }
+
+            public EANN(double[][] trainingIn, double[] trainingOut, double[][] testingIn, double[] testingOut)
      {
       this.Chronos = new Stopwatch();
       this.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
