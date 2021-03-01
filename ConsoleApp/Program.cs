@@ -38,7 +38,7 @@ namespace ConsoleApp
 
             Console.WriteLine("Hello ANN!");
 
-            LaunchANN();
+           
 
 
             //Console.WriteLine("Hello SVR!");
@@ -46,7 +46,7 @@ namespace ConsoleApp
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Ex.csv";
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Exemple.csv";
 
-            // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_ExempleSinX.csv";
+            string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_ExempleSinX.csv";
             
             // //QC_Sidi_Aissa SSL :
             // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa.csv";
@@ -59,16 +59,16 @@ namespace ConsoleApp
             // //Station_Ain_El_Assel_Dataset_Pf(Q) :
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Station_Ain_El_Assel_Dataset_Pf(Q).csv";
                         
-            // LoadData(file);
+            LoadData(file);
 
-            // df = new DataFormater(DataSet);
-            // df.TrainingPourcentage = 70;
+            df = new DataFormater(DataSet);
+            df.TrainingPourcentage = 70;
 
-            // df.Format(1,0);
+            df.Format(2,1);
 
             // Console.WriteLine("LearnIn = {0}, LearnOut = {1}, TestIn = {2}, TestOut = {3}",df.TrainingInput.Length, df.TrainingOutput.Length, df.TestingInput.Length, df.TestingOutput.Length );
 
-                        
+
             //if (!Equals(df.TrainingInput, null)) { Console.WriteLine("Training = {0}", df.TrainingInput.Length); }
 
             // // Luanch EOSVR with EOAlgo params.   
@@ -76,6 +76,8 @@ namespace ConsoleApp
             // int kmax=2;
 
             // LaunchEOSVR(n,kmax);
+
+            LaunchANN(df.TrainingInput, df.TrainingOutput);
 
 
         }
@@ -161,17 +163,17 @@ namespace ConsoleApp
         }
 
 
-        static void LaunchANN()
+        static void LaunchANN(double[][] matrix, double[] vector)
         {
-            double[] vector = new double[] { 0.2, 0.2, 0.6, 0.9, 0.5};
-            double[][] matrix = new double[][]
-            {
-                new double[]{0.1, 0.1},
-                new double[]{0.2, 0.0},
-                new double[]{0.3, 0.3},
-                new double[]{0.4, 0.5}, 
-                new double[]{0.25, 0.25}
-            };
+            //double[] vector = new double[] { 0.2, 0.2, 0.6, 0.9, 0.5};
+            //double[][] matrix = new double[][]
+            //{
+            //    new double[]{0.1, 0.1},
+            //    new double[]{0.2, 0.0},
+            //    new double[]{0.3, 0.3},
+            //    new double[]{0.4, 0.5}, 
+            //    new double[]{0.25, 0.25}
+            //};
 
             DataSerie1D annStrct = new DataSerie1D();
             annStrct.Add("HL1", 4);
@@ -179,23 +181,23 @@ namespace ConsoleApp
 
             NeuralNetworkEngineEO ann = new NeuralNetworkEngineEO(matrix, vector, annStrct);
             ann.LearningMaxIterations = 100;
-            ann.LearningError = 0.001;
+            ann.LearningError = 0.0001;
             ann.LearningAlgorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
-            ann.LearningAlgorithm_Params = new double[] { 0.1, 10 };
-            ann.ActivationFunction = ActivationFunctionEnum.SigmoidFunction;
-            ann.ActiveFunction_Params = new double[] { 2.00};
+            ann.LearningAlgorithm_Params = new double[] {0.1, 10};
+            ann.ActivationFunction = ActivationFunctionEnum.BipolarSigmoidFunction;
+            ann.ActiveFunction_Params = new double[]{1.00};
 
 
             ann.Learn();
+            //-0.5440211109;-0.2720105555
+            var ans =ann.Compute(new double[] { -0.544 }); 
 
-          var ans=ann.Compute(new double[] { 0.5, 0.2 });
-
-            foreach(var valu in ans)
+            foreach (var valu in ans)
             {
                 Console.WriteLine("ans = {0}", valu);
             }
 
-            Console.WriteLine("Final teaching err ={0}, MaxIter ={1}.", ann.FinalTeachingError, ann.FinalIterationsCount);
+            Console.WriteLine("Final teaching err = {0}; MaxIter ={1}.", ann.FinalTeachingError, ann.FinalIterationsCount);
 
         }
 
