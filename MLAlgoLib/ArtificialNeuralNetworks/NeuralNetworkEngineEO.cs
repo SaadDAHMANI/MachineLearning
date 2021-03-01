@@ -34,11 +34,11 @@ namespace ArtificialNeuralNetwork
 
             /// <summary>
             /// The array of parameters must be set in this order according to the learning algorithm. 
-            /// - BackPropagationLearning -> 02 parameters : LearningRate (default = 0.1), Momentum (default = 0.0).
-            /// - LevenbergMarquardtLearning -> 02 parameters : LearningRate (default = 0.1), Adjustment (default = 10.0).
-            /// - BayesianLevenbergMarquardtLearning-> 04 parameters : LearningRate (default = 0.1), Adjustment (default = 10.0), Alpha, Beta.
-            /// - EvolutionaryLearning -> 02 parameters :  PopulationSize_N, MaxIteration
-            /// - PSOGSA_Learning -> 06 parameters : PopulationSize_N, MaxIteration, G0, Alpha, C1, C2. 
+            /// || BackPropagationLearning -> 02 parameters : LearningRate (default = 0.1), Momentum (default = 0.0).
+            /// || LevenbergMarquardtLearning -> 02 parameters : LearningRate (default = 0.1), Adjustment (default = 10.0).
+            /// || BayesianLevenbergMarquardtLearning-> 04 parameters : LearningRate (default = 0.1), Adjustment (default = 10.0), Alpha, Beta.
+            /// || EvolutionaryLearning -> 02 parameters :  PopulationSize_N, MaxIteration
+            /// || PSOGSA_Learning -> 06 parameters : PopulationSize_N, MaxIteration, G0, Alpha, C1, C2. 
             /// </summary>
             [Category("Learning Algorithm Parameters")] public double[] LearningAlgorithm_Params { get; set; }
             int IterationCounter = 0;
@@ -48,7 +48,10 @@ namespace ArtificialNeuralNetwork
             }
 
             int MaxIteration = 3;
-            public int MaxIterationCount
+            /// <summary>
+            /// Get or set the number of iterations in learning (learning stopping criteria).
+            /// </summary>
+            public int LearningMaxIterations
             {
                 get { return MaxIteration; }
                 set { MaxIteration = value; }
@@ -61,7 +64,11 @@ namespace ArtificialNeuralNetwork
             }
 
             double mTeachingError = 0.01;
-            public double TeachingError
+
+            /// <summary>
+            /// Get or set the learning error (learning stopping criteria, default = 0.01)
+            /// </summary>
+            public double LearningError
             {
                 get { return mTeachingError; }
                 set { mTeachingError = value; }
@@ -161,7 +168,6 @@ namespace ArtificialNeuralNetwork
 
                     // create teacher
                     ISupervisedLearning teacher = null;
-
                     //LevenbergMarquardtLearning teacher = new LevenbergMarquardtLearning(Network);
                     //BackPropagationLearning teacher = new BackPropagationLearning(Network);
                     // EvolutionaryLearning teacher = new EvolutionaryLearning(Network, 25);
@@ -190,7 +196,7 @@ namespace ArtificialNeuralNetwork
                             break;
 
                         case LearningAlgorithmEnum.BayesianLevenbergMarquardtLearning:
-                            throw new NotImplementedException("");
+                            throw new NotImplementedException("The implementation is not finished yet.");
 
                             if (LearningAlgorithm_Params.Length < 4) { throw new Exception("No activation function parameterss are specified !!!"); }
 

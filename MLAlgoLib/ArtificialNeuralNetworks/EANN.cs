@@ -78,11 +78,14 @@ public class EANN: EvolutionaryMLBase
                 _BestNeuralNetwork.Training_Inputs = this.LearningInputs;
                 _BestNeuralNetwork.Training_Outputs = ConvertToJagged(this.LearningOutputs);
 
-                /// Step 2 : set ANN's structure, activation function, 
+                /// Step 2 : set ANN's structure, activation function and params, 
                 _BestNeuralNetwork.LayersStruct = GetLayersStruct(hidenLayerStructure, this.LearningInputs[0].Length, 1);
 
                 _BestNeuralNetwork.ActivationFunction = DefaultActivationFunction;
                 _BestNeuralNetwork.LearningAlgorithm_Params = DefaultActiveFunction_Params;
+
+                _BestNeuralNetwork.LearningMaxIterations= 10;
+                
             }
 
             public override void Learn()
