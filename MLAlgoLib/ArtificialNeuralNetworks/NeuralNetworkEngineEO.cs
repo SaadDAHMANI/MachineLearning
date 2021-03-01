@@ -20,6 +20,29 @@ namespace ArtificialNeuralNetwork
         public class NeuralNetworkEngineEO
         {
 
+            public NeuralNetworkEngineEO()
+            {
+                this.LearningAlgorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
+                this.ActivationFunction = ActivationFunctionEnum.SigmoidFunction;
+            }
+            public NeuralNetworkEngineEO(double[][] trainingIn, double[] trainingOut)
+            {
+               
+                this.LearningAlgorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
+                this.ActivationFunction = ActivationFunctionEnum.SigmoidFunction;
+                this.Learning_Inputs= trainingIn;
+                this.Learning_Outputs = ConvertToJagged(trainingOut);
+            }
+            public NeuralNetworkEngineEO(double[][] trainingIn, double[] trainingOut, DataSerie1D annHidenLayers)
+            {
+
+                this.LearningAlgorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
+                this.ActivationFunction = ActivationFunctionEnum.SigmoidFunction;
+                this.Learning_Inputs = trainingIn;
+                this.Learning_Outputs = ConvertToJagged(trainingOut);
+                this.networkStruct = GetLayersStruct(annHidenLayers, trainingIn[0].Length, 1);
+            }
+
             /// <summary>
             /// The Activation Function.
             /// </summary>
@@ -94,14 +117,14 @@ namespace ArtificialNeuralNetwork
             }
 
             double[][] mTraining_Inputs;
-            public double[][] Training_Inputs
+            public double[][] Learning_Inputs
             {
                 get { return mTraining_Inputs; }
                 set { mTraining_Inputs = value; }
             }
 
             double[][] mTraining_Outputs;
-            public double[][] Training_Outputs
+            public double[][] Learning_Outputs
             {
                 get { return mTraining_Outputs; }
                 set { mTraining_Outputs = value; }
@@ -122,6 +145,49 @@ namespace ArtificialNeuralNetwork
             private double[] BestWeights;
             public double[] Best_Weights
             { get { return BestWeights; } }
+
+            public static double[][] ConvertToJagged(double[] vector)
+            {
+                if (Equals(vector, null)) { return null; }
+
+                double[][] matrix = new double[vector.Length][];
+
+                for (int i = 0; i < vector.Length; i++)
+                {
+                    matrix[i] = new double[] { vector[i] };
+                }
+
+                return matrix;
+            }
+
+            public int[] GetLayersStruct(DataSerie1D hidenLayersStructure, int inputsCount, int ouputsCount)
+            {
+                int iCount = 2;
+                int[] result = null;
+
+                if ((object.Equals(hidenLayersStructure, null)) || (object.Equals(hidenLayersStructure.Data, null)))
+                {
+                    result = new int[iCount];
+                    result[0] = inputsCount;
+                    result[1] = ouputsCount;
+                }
+                else
+                {
+                    iCount = hidenLayersStructure.Data.Count + 1;
+
+                    result = new int[iCount];
+
+                    for (int i = 0; i < (iCount - 1); i++)
+                    {
+                        result[i] = (Int32)Math.Round(hidenLayersStructure.Data[i].X_Value, 0);
+                    }
+
+                    result[(iCount - 1)] = ouputsCount;
+
+                }
+                return result;
+            }
+
 
             public void Learn()
             {

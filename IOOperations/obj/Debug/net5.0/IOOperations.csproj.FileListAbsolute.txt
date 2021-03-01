@@ -14,7 +14,6 @@ F:\VS19_Apps\MachineLearning\IOOPerations\bin\Debug\net5.0\IOOperations.deps.jso
 F:\VS19_Apps\MachineLearning\IOOPerations\bin\Debug\net5.0\IOOperations.dll
 F:\VS19_Apps\MachineLearning\IOOPerations\bin\Debug\net5.0\ref\IOOperations.dll
 F:\VS19_Apps\MachineLearning\IOOPerations\bin\Debug\net5.0\IOOperations.pdb
-F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\IOOperations.csprojAssemblyReference.cache
 F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\IOOperations.GeneratedMSBuildEditorConfig.editorconfig
 F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\IOOperations.AssemblyInfoInputs.cache
 F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\IOOperations.AssemblyInfo.cs
@@ -22,3 +21,4 @@ F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\IOOperations.csproj.C
 F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\IOOperations.dll
 F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\ref\IOOperations.dll
 F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\IOOperations.pdb
+F:\VS19_Apps\MachineLearning\IOOPerations\obj\Debug\net5.0\IOOperations.csprojAssemblyReference.cache

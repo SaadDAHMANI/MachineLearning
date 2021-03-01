@@ -96,8 +96,8 @@ public class EANN: EvolutionaryMLBase
                 // Step 1 : Standerize Data and get Input data;
                 //------------------------------------------------
 
-                _BestNeuralNetwork.Training_Inputs = this.LearningInputs;
-                _BestNeuralNetwork.Training_Outputs = ConvertToJagged(this.LearningOutputs);
+                _BestNeuralNetwork.Learning_Inputs = this.LearningInputs;
+                _BestNeuralNetwork.Learning_Outputs = ConvertToJagged(this.LearningOutputs);
 
                 /// Step 2 : set ANN's structure, activation function and params, 
                 _BestNeuralNetwork.LayersStruct = GetLayersStruct(hidenLayerStructure, this.LearningInputs[0].Length, 1);

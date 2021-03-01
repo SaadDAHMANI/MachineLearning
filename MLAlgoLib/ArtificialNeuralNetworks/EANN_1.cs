@@ -571,13 +571,13 @@ public class EANN_1
                 {
                     case LearningAlgorithmEnum.BackPropagationLearning:
 
-                        AnnEo.ActivationFunction = (ActivationFunctionEnum)(int)positions[0];
-                        AnnEo.ActiveFunction_Alpha = positions[1];
+                        //AnnEo.ActivationFunction = (ActivationFunctionEnum)(int)positions[0];
+                        //AnnEo.ActiveFunction_Alpha = positions[1];
 
-                        AnnEo.LearningRate = positions[2];
+                        //AnnEo.LearningRate = positions[2];
 
-                        AnnEo.TeachingError = positions[3];
-                        AnnEo.MaxIterationCount = (int)positions[4];
+                        //AnnEo.TeachingError = positions[3];
+                        //AnnEo.MaxIterationCount = (int)positions[4];
 
                         hidenLayerCount =Math.Max((int)positions[5],1);
 
@@ -600,12 +600,12 @@ public class EANN_1
                     case LearningAlgorithmEnum.LevenbergMarquardtLearning:
 
                         AnnEo.ActivationFunction = (ActivationFunctionEnum)(int)positions[0];
-                        AnnEo.ActiveFunction_Alpha = positions[1];
+                        //AnnEo.ActiveFunction_Alpha = positions[1];
 
-                        AnnEo.LearningRate = positions[2];
+                        //AnnEo.LearningRate = positions[2];
 
-                        AnnEo.TeachingError = positions[3];
-                        AnnEo.MaxIterationCount = (int)positions[4];
+                        //AnnEo.TeachingError = positions[3];
+                        //AnnEo.MaxIterationCount = (int)positions[4];
 
                         hidenLayerCount = Math.Max((int)positions[5],1);
 
@@ -627,12 +627,12 @@ public class EANN_1
 
                     case LearningAlgorithmEnum.EvolutionaryLearningGA:
                         AnnEo.ActivationFunction = (ActivationFunctionEnum)(int)positions[0];
-                        AnnEo.ActiveFunction_Alpha = positions[1];
+                        //AnnEo.ActiveFunction_Alpha = positions[1];
 
-                        AnnEo.EOA_PopulationSize = (int)positions[2];
+                        //AnnEo.EOA_PopulationSize = (int)positions[2];
 
-                        AnnEo.TeachingError = positions[3];
-                        AnnEo.MaxIterationCount = (int)positions[4];
+                        //AnnEo.TeachingError = positions[3];
+                        //AnnEo.MaxIterationCount = (int)positions[4];
 
                         hidenLayerCount = (int)positions[5];
 
@@ -653,15 +653,15 @@ public class EANN_1
                          break;
                     case LearningAlgorithmEnum.HPSOGWO_Learning:
                         AnnEo.ActivationFunction = (ActivationFunctionEnum)(int)positions[0];
-                        AnnEo.ActiveFunction_Alpha = positions[1];
+                        //AnnEo.ActiveFunction_Alpha = positions[1];
 
-                        AnnEo.EOA_PopulationSize = (int)positions[2];
-                        AnnEo.HPSOGWO_C1 = positions[3];
-                        AnnEo.HPSOGWO_C2 = positions[4];
-                        AnnEo.HPSOGWO_C3 = positions[5];
+                        //AnnEo.EOA_PopulationSize = (int)positions[2];
+                        //AnnEo.HPSOGWO_C1 = positions[3];
+                        //AnnEo.HPSOGWO_C2 = positions[4];
+                        //AnnEo.HPSOGWO_C3 = positions[5];
 
-                        AnnEo.TeachingError = positions[6];
-                        AnnEo.MaxIterationCount = (int)positions[7];
+                        //AnnEo.TeachingError = positions[6];
+                        //AnnEo.MaxIterationCount = (int)positions[7];
 
                         hidenLayerCount = (int)positions[8];
 
@@ -695,12 +695,12 @@ public class EANN_1
                 AnnEo = new NeuralNetworkEngineEO();
                 AnnEo.LearningAlgorithm = Learning_Algorithm;
                 //AnnEo.InputsCount = Training_Input_Count; 
-                AnnEo.Training_Inputs = this.Obs_Training_Inputs;
-                AnnEo.Training_Outputs = this.Obs_Training_Outputs;
+                //AnnEo.Training_Inputs = this.Obs_Training_Inputs;
+                //AnnEo.Training_Outputs = this.Obs_Training_Outputs;
 
-                SetLearningAlgoParams(ref positions);
+                //SetLearningAlgoParams(ref positions);
 
-                AnnEo.LuanchLearning();
+                //AnnEo.LuanchLearning();
 
                 // Compute testing error (for fitness computing)
                 var testingOut = GetFirstColumn(AnnEo.Compute(this.Obs_Testing_Inputs));
