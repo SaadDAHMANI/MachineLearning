@@ -32,7 +32,7 @@ public class EANN: EvolutionaryMLBase
                 this.LearningOutputs = trainingOut;
       }
 
-            public EANN(double[][] trainingIn, double[] trainingOut, double[][] testingIn, double[] testingOut)
+    public EANN(double[][] trainingIn, double[] trainingOut, double[][] testingIn, double[] testingOut)
      {
       this.Chronos = new Stopwatch();
       this.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
@@ -43,16 +43,23 @@ public class EANN: EvolutionaryMLBase
                 this.TestingOutputs = testingOut;
      }
 
-
      [Category("Learning Algorithm Parameters")] public LearningAlgorithmEnum Learning_Algorithm {get; set;}
 
-            /// <summary>
-            /// The Defaullt is set to Sigmoid Function.
-            /// </summary>
-            [Category("Learning Algorithm Parameters")] public ActivationFunctionEnum DefaultActivationFunction { get; set; }
+     /// <summary>
+     /// The Defaullt is set to Sigmoid Function.
+     /// </summary>
+     [Category("Learning Algorithm Parameters")] public ActivationFunctionEnum DefaultActivationFunction { get; set; }
 
-            [Category("Learning Algorithm Parameters")] public double[] DefaultActiveFunction_Params { get; set;}
-            private Stopwatch Chronos;
+     [Category("Learning Algorithm Parameters")] public double[] DefaultActiveFunction_Params { get; set;}
+
+
+
+     private List<MonoObjectiveEOALib.Range> _SearchRanges;
+
+     public List<MonoObjectiveEOALib.Range> SearchRanges { get { return _SearchRanges;} }
+
+
+     private Stopwatch Chronos;
      public long ComputationDuration
          {
              get {if (!Equals(Chronos, null))
@@ -87,7 +94,7 @@ public class EANN: EvolutionaryMLBase
             /// The data must be standarize before learning.
             /// </summary>
             /// <param name="hidenLayerStructure"></param>
-    public void Learn(DataSerie1D hidenLayerStructure )
+      public void Learn(DataSerie1D hidenLayerStructure )
      {
                 // Step 0 : Check data
                 if (CheckData() == false) { return; }
@@ -109,16 +116,91 @@ public class EANN: EvolutionaryMLBase
                 
             }
 
-            public override void Learn()
-            {
-                if (Equals(HidenLayerStructure,null)) { return;}
-                Learn(HidenLayerStructure);
-            }
-            public override void LearnEO()
+      public override void Learn()
+    {
+     if (Equals(HidenLayerStructure,null)) { return;}
+     Learn(HidenLayerStructure);
+    }
+      public override void LearnEO()
      {
-        
+        if (CheckData()) { return;}
+                Initialize();
+
+
+
      }
-      public override void Compute(double[][] inputs)
+            private int _MinLearningIterations=1;
+            public int MinLearningIterations
+            {
+                get { return _MinLearningIterations; }
+                set { _MinLearningIterations = Math.Max(1, value); }
+            }
+
+            private int _MaxLearningIterations=1;
+            public int MaxLearningIterations
+            {
+                get { return _MaxLearningIterations; }
+                set { _MaxLearningIterations = Math.Max(1, value); }
+            }
+
+            private int _MinHidenNeuronesCount=1;
+            public int MinHidenNeuronesCount
+            {
+                get { return _MinHidenNeuronesCount;}
+                set { _MinHidenNeuronesCount = Math.Max(1, value); }
+            }
+
+            private int _MaxHidenNeuronesCount = 1;
+            public int MaxHidenNeuronesCount
+            {
+                get { return _MaxHidenNeuronesCount; }
+                set { _MaxHidenNeuronesCount = Math.Max(1, value); }
+            }
+
+
+
+
+            private void Initialize()
+      {
+
+          switch(this.Learning_Algorithm)
+
+               {
+                    case LearningAlgorithmEnum.BackPropagationLearning:
+                        
+                    _SearchRanges = new List<MonoObjectiveEOALib.Range>
+                    {
+                    new MonoObjectiveEOALib.Range("Activation Function",0.8, 2.4),
+                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.2, 5),
+                    new MonoObjectiveEOALib.Range("Learning rate", 0.1, 1),
+                    new MonoObjectiveEOALib.Range("Learning Err", 0.01, 1),
+                    new MonoObjectiveEOALib.Range("Max Iteration (Kmax)", MinLearningIterations, MaxLearningIterations),
+                    new MonoObjectiveEOALib.Range("Hiden Layer Number", 1, 5),
+                    new MonoObjectiveEOALib.Range("Layer 1 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
+                    new MonoObjectiveEOALib.Range("Layer 2 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
+                    new MonoObjectiveEOALib.Range("Layer 3 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
+                    new MonoObjectiveEOALib.Range("Layer 4 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
+                    new MonoObjectiveEOALib.Range("Layer 5 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
+                    new MonoObjectiveEOALib.Range("Layer 6 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
+                    new MonoObjectiveEOALib.Range("Layer 7 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount)
+                     };
+
+                        break;
+                    case LearningAlgorithmEnum.LevenbergMarquardtLearning:
+                        throw new NotImplementedException();
+                        break;
+                    case LearningAlgorithmEnum.BayesianLevenbergMarquardtLearning:
+                        throw new NotImplementedException();
+                        break;
+                    default:
+                        this.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
+                        Initialize();
+                        break;
+
+                }
+      }
+
+    public override void Compute(double[][] inputs)
      {
         
      }
@@ -137,7 +219,7 @@ public class EANN: EvolutionaryMLBase
                 return matrix;
             }
 
-           public int[] GetLayersStruct(DataSerie1D hidenLayersStructure, int inputsCount, int ouputsCount)
+    public int[] GetLayersStruct(DataSerie1D hidenLayersStructure, int inputsCount, int ouputsCount)
             {
                 int iCount = 2;
                 int[] result = null;

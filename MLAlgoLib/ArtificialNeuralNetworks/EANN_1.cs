@@ -214,7 +214,7 @@ public class EANN_1
                 switch (this.Learning_Algorithm)
                 {
                     case LearningAlgorithmEnum.BackPropagationLearning :
-                        intervales = new List<MonoObjectiveEOALib.Range>
+                    intervales = new List<MonoObjectiveEOALib.Range>
                     {
                     new MonoObjectiveEOALib.Range("Activation Function",0.8, 2.4),
                     new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.2, 5),
