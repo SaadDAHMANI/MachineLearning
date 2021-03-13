@@ -52,7 +52,7 @@ public class EANN: EvolutionaryMLBase
 
      [Category("Learning Algorithm Parameters")] public double[] DefaultActiveFunction_Params { get; set;}
 
-
+     MonoObjectiveEOALib.EvolutionaryAlgoBase Optimizer;
 
      private List<MonoObjectiveEOALib.Range> _SearchRanges;
 
@@ -122,13 +122,38 @@ public class EANN: EvolutionaryMLBase
      Learn(HidenLayerStructure);
     }
       public override void LearnEO()
-     {
-        if (CheckData()) { return;}
+       {
+                if (CheckData()) { return;}
+       
                 Initialize();
 
+                Optimizer = new MonoObjectiveEOALib.PSOGSA_Optimizer();
+                Optimizer.Dimensions_D = GetSearchSpaceDimension(this.Learning_Algorithm);
+                Optimizer.MaxIterations = this.MaxIterations;
+                Optimizer.PopulationSize_N = this.PopulationSize;
+                Optimizer.SearchRanges = this.SearchRanges;
+                Optimizer.ObjectiveFunction += Optimizer_ObjectiveFunction;
+
+                if (Equals(Chronos, null)) { Chronos = new Stopwatch(); }
+
+                Chronos.Reset();
+                Chronos.Start();
+                Optimizer.Compute();
+                Chronos.Stop();
 
 
-     }
+
+
+
+       }
+            NeuralNetworkEngineEO neuralNet;
+            private void Optimizer_ObjectiveFunction(double[] positions, ref double fitnessValue)
+            {
+                neuralNet = new NeuralNetworkEngineEO(LearningInputs, LearningOutputs);
+                
+
+            }
+
             private int _MinLearningIterations=1;
             public int MinLearningIterations
             {
@@ -157,7 +182,25 @@ public class EANN: EvolutionaryMLBase
                 set { _MaxHidenNeuronesCount = Math.Max(1, value); }
             }
 
-
+            private int GetSearchSpaceDimension(LearningAlgorithmEnum LearningAlgo)
+            {
+               
+                switch (LearningAlgo)
+                {
+                    case LearningAlgorithmEnum.BackPropagationLearning:
+                       return 13;
+                        break;
+                    case LearningAlgorithmEnum.LevenbergMarquardtLearning:
+                       return 10;
+                        break;
+                    case LearningAlgorithmEnum.BayesianLevenbergMarquardtLearning:
+                        return 10;
+                        break;
+                    default:
+                        return 13;
+                        break;
+                }                
+            }
 
 
             private void Initialize()
@@ -169,20 +212,18 @@ public class EANN: EvolutionaryMLBase
                     case LearningAlgorithmEnum.BackPropagationLearning:
                         
                     _SearchRanges = new List<MonoObjectiveEOALib.Range>
-                    {
+                     {
                     new MonoObjectiveEOALib.Range("Activation Function",0.8, 2.4),
                     new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.2, 5),
                     new MonoObjectiveEOALib.Range("Learning rate", 0.1, 1),
-                    new MonoObjectiveEOALib.Range("Learning Err", 0.01, 1),
+                    new MonoObjectiveEOALib.Range("Learning Err", 0.01, 0.1),
                     new MonoObjectiveEOALib.Range("Max Iteration (Kmax)", MinLearningIterations, MaxLearningIterations),
                     new MonoObjectiveEOALib.Range("Hiden Layer Number", 1, 5),
                     new MonoObjectiveEOALib.Range("Layer 1 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
                     new MonoObjectiveEOALib.Range("Layer 2 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
                     new MonoObjectiveEOALib.Range("Layer 3 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
                     new MonoObjectiveEOALib.Range("Layer 4 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
-                    new MonoObjectiveEOALib.Range("Layer 5 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
-                    new MonoObjectiveEOALib.Range("Layer 6 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
-                    new MonoObjectiveEOALib.Range("Layer 7 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount)
+                    new MonoObjectiveEOALib.Range("Layer 5 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount)
                      };
 
                         break;

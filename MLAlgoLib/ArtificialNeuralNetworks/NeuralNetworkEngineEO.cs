@@ -229,7 +229,6 @@ namespace ArtificialNeuralNetwork
                         default:
                             Network = new ActivationNetwork(new SigmoidFunction(ActiveFunction_Params[0]), ANN_InputsCount, networkStruct);
                             break;
-
                     }
 
                     // create teacher
