@@ -25,6 +25,7 @@ F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveE
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.dll
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\bin\Debug\net5.0\ref\MonoObjectiveEOALib.dll
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\bin\Debug\net5.0\MonoObjectiveEOALib.pdb
+F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.vbprojAssemblyReference.cache
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.GeneratedMSBuildEditorConfig.editorconfig
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.AssemblyInfoInputs.cache
 F:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Debug\net5.0\MonoObjectiveEOALib.AssemblyInfo.vb

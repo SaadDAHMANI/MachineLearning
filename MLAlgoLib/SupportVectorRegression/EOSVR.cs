@@ -173,9 +173,18 @@ public class EOSVR
 
         private double _BestScore; 
         public double BestScore
-        {get {return _BestScore;}} 
-        
-        private double[] _BestSolution;
+        {get {return _BestScore;}}
+
+       public List<double> BestChart 
+            {
+                get
+                {
+                    if (Equals(Optimizer.BestChart, null)) { return null; }
+                    else { return Optimizer.BestChart; }
+                }
+            }
+
+            private double[] _BestSolution;
         public double[] BestSolution
         {get {return _BestSolution;}}
         

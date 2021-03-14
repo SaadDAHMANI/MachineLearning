@@ -13,6 +13,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 using Accord;
 using Accord.IO;
 using Accord.MachineLearning.VectorMachines;
@@ -23,12 +24,12 @@ using IOOperations;
 using MLAlgoLib;
 using MLAlgoLib.SupportVectorRegression;
 using MLAlgoLib.ArtificialNeuralNetwork;
+using MonoObjectiveEOALib;
 
 namespace ConsoleApp
 {
     class Program
     {       
-
          static string fileName_DST;
          static DataSerieTD DataSet;
          static DataFormater df;   
@@ -36,30 +37,27 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Hello ANN!");
+            Console.WriteLine("Hello SVR & ANN!");
 
-
-
-            //Console.WriteLine("Hello SVR!");
-
-            string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Test_Wail.csv";  
+            //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Test_Wail.csv";
 
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Ex.csv";
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Exemple.csv";
 
             //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_ExempleSinX.csv";
-            
+
             // //QC_Sidi_Aissa SSL :
             // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa.csv";
-            // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Clustre_1.csv";
+            //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
 
-                        
+
             // //Beni-Bahdel_Dame_3Q :
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Beni-Bahdel_Dame_3Q.csv";
 
             // //Station_Ain_El_Assel_Dataset_Pf(Q) :
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Station_Ain_El_Assel_Dataset_Pf(Q).csv";
-                        
+            string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Station_Ain_El_Assel_Dataset_Pf(Q)_Standard.csv";
+            
             LoadData(file);
 
             df = new DataFormater(DataSet);
@@ -69,16 +67,15 @@ namespace ConsoleApp
 
             // Console.WriteLine("LearnIn = {0}, LearnOut = {1}, TestIn = {2}, TestOut = {3}",df.TrainingInput.Length, df.TrainingOutput.Length, df.TestingInput.Length, df.TestingOutput.Length );
 
-
             //if (!Equals(df.TrainingInput, null)) { Console.WriteLine("Training = {0}", df.TrainingInput.Length); }
 
             // // Luanch EOSVR with EOAlgo params.   
-            int n=2;
-            int kmax=2;
+            int n=5;
+            int kmax=10;
 
             LaunchEOSVR(n,kmax);
 
-            Console.WriteLine("___________________________________________________");
+            Console.WriteLine("_______________________________________________________________________");
 
             //LaunchANN(df.TrainingInput, df.TrainingOutput);
 
@@ -94,8 +91,8 @@ namespace ConsoleApp
             eo_svr.PopulationSize=popSize;
             eo_svr.MaxIterations=iterMax;
 
-            eo_svr.Sigma_Kernel=1.336687063023768; //1.1; //1.336687063023768
-            eo_svr.Param_Complexity = 56.8121658157614; // 100; //56.8121658157614
+            eo_svr.Sigma_Kernel=1.1; //1.1; //1.336687063023768
+            eo_svr.Param_Complexity = 100; // 100; //56.8121658157614
             eo_svr.Param_Epsilon = 0.001; // 0.001
             eo_svr.Param_Tolerance = 0.001; //0.001
 
@@ -112,22 +109,31 @@ namespace ConsoleApp
   
             Console.WriteLine("Best learning index = {0} ; Best testing index = {1}", eo_svr.BestLearningScore, eo_svr.BestTestingScore);
 
-            double[][] xy = new double[][] 
+            if (!Equals(eo_svr.BestChart, null))
             {
-                new double [] { 0.8, 0.12 },
-               new double []{0.16, 0.10},
-
-                new double [] {0.24, 0.26 },
-               new double []{0.35, 0.10}
-            };
-
-            var z = eo_svr.Compute(xy);
-
-            if (Equals(z, null)) { return; }
-            foreach (double value in z)
-            {
-                Console.WriteLine("z = {0}", Math.Round( value,3));
+                foreach (var valu in eo_svr.BestChart)
+                {
+                    Console.WriteLine(valu);
+                }
             }
+            
+
+            //double[][] xy = new double[][] 
+            //{
+            //   new double []{ 0.8},
+            //   new double []{0.16},
+            //   new double []{0.24},
+            //   new double []{0.35},
+            //   new double []{0.25}
+            //};
+
+            //var z = eo_svr.Compute(xy);
+
+            //if (Equals(z, null)) { return; }
+            //foreach (double value in z)
+            //{
+            //    Console.WriteLine("z = {0}", Math.Round( value,3));
+            //}
         }
 
         static void LoadDataDST()
@@ -225,43 +231,70 @@ namespace ConsoleApp
 
         static void LaunchANNEO(DataFormater dfr, int n, int kmax)
         {
+            int minHLNeurones = 1;
+            int maxHLNeurones= 5;
+            int kminL = 50;
+            int kmaxL = 200;
+             
+            var ranges = new List<MonoObjectiveEOALib.Range>
+                     {
+                    new MonoObjectiveEOALib.Range("Activation Function",2, 2.5),
+                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.1, 2.5),
+                    new MonoObjectiveEOALib.Range("Learning rate", 0.05, 0.1),
+                    new MonoObjectiveEOALib.Range("Momentum/Ajustement", 10,12),
+                    new MonoObjectiveEOALib.Range("Learning Err", 0.001, 0.01),
+                    new MonoObjectiveEOALib.Range("Max Iteration (Kmax)", kminL, kmaxL),
+                    new MonoObjectiveEOALib.Range("Hiden Layer Number", 1, 5),
+                    new MonoObjectiveEOALib.Range("Layer 1 Nodes count",minHLNeurones, maxHLNeurones),
+                    new MonoObjectiveEOALib.Range("Layer 2 Nodes count", minHLNeurones, maxHLNeurones),
+                    new MonoObjectiveEOALib.Range("Layer 3 Nodes count", minHLNeurones, maxHLNeurones),
+                    new MonoObjectiveEOALib.Range("Layer 4 Nodes count",  minHLNeurones, maxHLNeurones),
+                    new MonoObjectiveEOALib.Range("Layer 5 Nodes count", minHLNeurones, maxHLNeurones)
+                     };
+
             EANN annEo = new EANN(dfr.TrainingInput, dfr.TrainingOutput, dfr.TestingInput, dfr.TestingOutput);
             
             annEo.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning ;
-            annEo.MinLearningIterations = 50;
-            annEo.MaxLearningIterations = 100;
 
-            annEo.MinHidenNeuronesCount = 1;
-            annEo.MaxHidenNeuronesCount = 5;
+            annEo.SearchRanges = ranges;
 
-            annEo.MaxIterations = kmax;           
+            annEo.MaxOptimizationIterations= kmax;           
             annEo.PopulationSize = n;
            
             annEo.LearnEO();
 
             Console.WriteLine("Best learning scroe = {0} ; Best testing score = {1}", annEo.BestLearningScore, annEo.BestTestingScore);
 
-           foreach (DataItem1D itm in annEo.BestChart.Data)
+           foreach (var itm in annEo.BestChart)
             {
-                Console.WriteLine(itm.Title, itm.X_Value);
+                Console.WriteLine(itm);
             }
 
+            //double[][] xy = new double[][]
+            // {
+            //   new double []{ 0.8},
+            //   new double []{0.16},
+            //   new double []{0.24},
+            //   new double []{0.35},
+            //   new double []{0.25}
+            // };
 
-            double[][] xy = new double[][]
-            {
-               new double []{0.8, 0.12},
-               new double []{0.16, 0.10},
-               new double []{0.24, 0.26},
-               new double []{0.35, 0.10}
-            };
+            //double[][] xy = new double[][]
+            //{
+            //   new double []{0.8, 0.12},
+            //   new double []{0.16, 0.10},
+            //   new double []{0.24, 0.26},
+            //   new double []{0.35, 0.10},
+            //   new double []{0.25, 0.12}
+            //};
 
-            var z = annEo.Compute(xy);
+            //var z = annEo.Compute(xy);
 
-            if (Equals(z, null)) { return; }
-            foreach (double value in z)
-            {
-                Console.WriteLine("z = {0}", Math.Round(value, 3));
-            }
+            //if (Equals(z, null)) { return; }
+            //foreach (double value in z)
+            //{
+            //    Console.WriteLine("z = {0}", Math.Round(value, 3));
+            //}
 
         }
 

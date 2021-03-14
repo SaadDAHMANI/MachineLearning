@@ -34,10 +34,10 @@ public abstract class EvolutionaryMLBase
      private double[] _Computed_TestingOutputs;
      public double[] Computed_TestingOutputs{get {return _Computed_TestingOutputs;}}
 
-     private int _MaxIterations;
-     public int MaxIterations 
-     { get {return _MaxIterations;}
-       set {_MaxIterations=Math.Max(0, value);}
+     private int _MaxOptimizationIterations;
+     public int MaxOptimizationIterations
+        { get {return _MaxOptimizationIterations; }
+       set { _MaxOptimizationIterations = Math.Max(0, value);}
      }
      
      private int _PopulationSize;

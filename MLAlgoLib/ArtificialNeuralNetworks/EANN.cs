@@ -54,10 +54,7 @@ public class EANN: EvolutionaryMLBase
 
      MonoObjectiveEOALib.EvolutionaryAlgoBase Optimizer;
 
-     private List<MonoObjectiveEOALib.Range> _SearchRanges;
-
-     public List<MonoObjectiveEOALib.Range> SearchRanges { get { return _SearchRanges;} }
-
+     public List<MonoObjectiveEOALib.Range> SearchRanges { get; set;}
 
      private Stopwatch Chronos;
      public long ComputationDuration
@@ -81,7 +78,7 @@ public class EANN: EvolutionaryMLBase
      private double _BestTestingScore = double.NaN;
      public double BestTestingScore { get { return _BestTestingScore; } }
 
-     public DataSerie1D BestChart {get {return _BestChart;}}
+     public List<double> BestChart { get { return Optimizer.BestChart;} }
 
      public DataSerie1D HidenLayerStructure { get; set;}
 
@@ -132,13 +129,13 @@ public class EANN: EvolutionaryMLBase
       public override void LearnEO()
        {
                 if (!CheckData()) { return;}
-       
-                Initialize();
+
+                InitializeSearchRanges();
 
                 Optimizer = new MonoObjectiveEOALib.PSOGSA_Optimizer();
                 
                 Optimizer.Dimensions_D = GetSearchSpaceDimension(this.Learning_Algorithm);
-                Optimizer.MaxIterations = this.MaxIterations;
+                Optimizer.MaxIterations = this.MaxOptimizationIterations;
                 Optimizer.PopulationSize_N = this.PopulationSize;
                 Optimizer.SearchRanges = this.SearchRanges;
 
@@ -151,21 +148,7 @@ public class EANN: EvolutionaryMLBase
 
                 Optimizer.Compute();
                 
-                Chronos.Stop();
-
-               if (!Equals(Optimizer.BestChart))
-                {
-                    _BestChart = new DataSerie1D("Best chart");
-                    
-                    int i = 1;
-
-                    foreach (double itm in Optimizer.BestChart)
-                    {
-                        _BestChart.Add(i.ToString(), itm);
-                        i += 1;
-                    }
-                }
-              
+                Chronos.Stop();                                    
             
             }
             NeuralNetworkEngineEO neuralNet;
@@ -250,7 +233,6 @@ public class EANN: EvolutionaryMLBase
                 {
                     if (Equals(dataset[i], null)) { return null; }
                     else { result[i] = dataset[i][0]; }
-
                 }
                 return result;
             }
@@ -300,16 +282,14 @@ public class EANN: EvolutionaryMLBase
                 }                
             }
 
-
-            private void Initialize()
-      {
-
+       private void InitializeSearchRanges()
+        {
+          if (!Equals(SearchRanges, null)) { return;}
           switch(this.Learning_Algorithm)
-
-               {
+               {                  
                     case LearningAlgorithmEnum.BackPropagationLearning | LearningAlgorithmEnum.LevenbergMarquardtLearning :
                         
-                    _SearchRanges = new List<MonoObjectiveEOALib.Range>
+                    SearchRanges = new List<MonoObjectiveEOALib.Range>
                      {
                     new MonoObjectiveEOALib.Range("Activation Function",1, 1),
                     new MonoObjectiveEOALib.Range("Alpha of Activation Function", 2, 2),
@@ -332,7 +312,7 @@ public class EANN: EvolutionaryMLBase
                         break;
                     default:
                         this.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
-                        Initialize();
+                        InitializeSearchRanges();
                         break;
 
                 }
