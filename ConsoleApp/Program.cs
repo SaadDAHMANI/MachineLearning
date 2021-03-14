@@ -105,7 +105,7 @@ namespace ConsoleApp
 
             Console.WriteLine("Best score = {0}", eo_svr.BestScore);
            
-         // Console.WriteLine("Best soltion : SigmaKernel= {0}; Complexity_C= {1}; Tolerance= {2}; Epsilon= {3}", eo_svr.BestSolution[0],eo_svr.BestSolution[1],eo_svr.BestSolution[2],eo_svr.BestSolution[3]);
+           // Console.WriteLine("Best soltion : SigmaKernel= {0}; Complexity_C= {1}; Tolerance= {2}; Epsilon= {3}", eo_svr.BestSolution[0],eo_svr.BestSolution[1],eo_svr.BestSolution[2],eo_svr.BestSolution[3]);
   
             Console.WriteLine("Best learning index = {0} ; Best testing index = {1}", eo_svr.BestLearningScore, eo_svr.BestTestingScore);
 

@@ -179,8 +179,13 @@ public class EOSVR
             {
                 get
                 {
-                    if (Equals(Optimizer.BestChart, null)) { return null; }
-                    else { return Optimizer.BestChart; }
+                    if (!Equals(Optimizer, null)) 
+                    {
+                        if (Equals(Optimizer.BestChart, null)) { return null; }
+                        else { return Optimizer.BestChart; }
+                    }
+                    else
+                    { return null; }
                 }
             }
 
