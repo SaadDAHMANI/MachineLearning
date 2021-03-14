@@ -156,14 +156,20 @@ public class EOSVR
             //   Console.WriteLine(value);
             //}
 
-            // Compute statistical results
-            
+            // Compute statistical results            
 
            BestLearningScore  = Statistics.Compute_DeterminationCoeff_R2(LearningOutputs, _Computed_LearningOutputs);            
-           BestTestingScore= Statistics.Compute_DeterminationCoeff_R2(TestingOutputs, _Computed_TestingOutputs);
-           
+           BestTestingScore= Statistics.Compute_DeterminationCoeff_R2(TestingOutputs, _Computed_TestingOutputs);     
+                
+           }
+            
+            public double[] Compute(double[][] inputs)
+            {
+                if (Equals(svm, null)) { return null;}
 
-     }    
+                return svm.Score(inputs);
+
+            }
 
         private double _BestScore; 
         public double BestScore
@@ -258,7 +264,21 @@ public double BestTestingScore=double.MinValue;
             fitnessValue=Math.Pow((2-LearningIndex+TestingIndex),2);   
  
      }
-}
+
+            public static double[][] ConvertToJagged(double[] vector)
+            {
+                if (Equals(vector, null)) { return null; }
+
+                double[][] matrix = new double[vector.Length][];
+
+                for (int i = 0; i < vector.Length; i++)
+                {
+                    matrix[i] = new double[] { vector[i] };
+                }
+
+                return matrix;
+            }
+        }
     public enum KernelEnum
     {
         Gaussian,

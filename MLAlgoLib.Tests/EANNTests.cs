@@ -50,6 +50,38 @@ namespace MLAlgoLib.Tests
 
         }
 
+
+        [Fact]
+        public void GetArrayTest1()
+        {
+            double[] vector = new double[] { 1, 2, 3, 4 };
+            double[][] matrix = new double[][]
+            {
+                new double[]{1, 0},
+                new double[]{2, 0},
+                new double[]{3, 0},
+                new double[]{4, 0}
+            };
+
+            Assert.Equal(vector, EANN.GetArray(matrix));
+        }
+
+        [Fact]
+        public void GetArrayTest2()
+        {
+            double[] vector = new double[] { 0, 0, 0, 0, 0 };
+            double[][] matrix = new double[][]
+            {
+                new double[]{0},
+                new double[]{0},
+                new double[]{0},
+                new double[]{0},
+                new double[]{0}
+            };
+
+            Assert.Equal(vector, EANN.GetArray(matrix));
+        }
+
         [Fact]
         public void GetLayersStructTest1()
         {

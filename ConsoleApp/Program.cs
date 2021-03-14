@@ -38,15 +38,16 @@ namespace ConsoleApp
 
             Console.WriteLine("Hello ANN!");
 
-           
 
 
             //Console.WriteLine("Hello SVR!");
 
+            string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Test_Wail.csv";  
+
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Ex.csv";
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Exemple.csv";
 
-            string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_ExempleSinX.csv";
+            //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_ExempleSinX.csv";
             
             // //QC_Sidi_Aissa SSL :
             // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa.csv";
@@ -64,7 +65,7 @@ namespace ConsoleApp
             df = new DataFormater(DataSet);
             df.TrainingPourcentage = 70;
 
-            df.Format(2,1);
+            df.Format(2,0,1);
 
             // Console.WriteLine("LearnIn = {0}, LearnOut = {1}, TestIn = {2}, TestOut = {3}",df.TrainingInput.Length, df.TrainingOutput.Length, df.TestingInput.Length, df.TestingOutput.Length );
 
@@ -72,10 +73,10 @@ namespace ConsoleApp
             //if (!Equals(df.TrainingInput, null)) { Console.WriteLine("Training = {0}", df.TrainingInput.Length); }
 
             // // Luanch EOSVR with EOAlgo params.   
-            // int n=2;
-            // int kmax=2;
+            int n=3;
+            int kmax=2;
 
-            // LaunchEOSVR(n,kmax);
+            //LaunchEOSVR(n,kmax);
 
             LaunchANN(df.TrainingInput, df.TrainingOutput);
 
@@ -96,8 +97,9 @@ namespace ConsoleApp
             eo_svr.Param_Tolerance = 0.001; //0.001
 
             // Console.WriteLine("---------> SVR : ");
-            eo_svr.Learn();            
+            eo_svr.Learn();    
             
+                      
             //Console.WriteLine("---------> EO-SVR : ");
             //eo_svr.LearnEO();
 
@@ -106,6 +108,23 @@ namespace ConsoleApp
          // Console.WriteLine("Best soltion : SigmaKernel= {0}; Complexity_C= {1}; Tolerance= {2}; Epsilon= {3}", eo_svr.BestSolution[0],eo_svr.BestSolution[1],eo_svr.BestSolution[2],eo_svr.BestSolution[3]);
   
             Console.WriteLine("Best learning index = {0} ; Best testing index = {1}", eo_svr.BestLearningScore, eo_svr.BestTestingScore);
+
+            double[][] xy = new double[][] 
+            {
+                new double [] { 0.8, 0.12 },
+               new double []{0.16, 0.10},
+
+                new double [] {0.24, 0.26 },
+               new double []{0.35, 0.10}
+            };
+
+            var z = eo_svr.Compute(xy);
+
+            if (Equals(z, null)) { return; }
+            foreach (double value in z)
+            {
+                Console.WriteLine("z = {0}", Math.Round( value,3));
+            }
         }
 
         static void LoadDataDST()
@@ -165,6 +184,7 @@ namespace ConsoleApp
 
         static void LaunchANN(double[][] matrix, double[] vector)
         {
+            
             //double[] vector = new double[] { 0.2, 0.2, 0.6, 0.9, 0.5};
             //double[][] matrix = new double[][]
             //{
@@ -185,24 +205,29 @@ namespace ConsoleApp
             ann.LearningAlgorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
             ann.LearningAlgorithm_Params = new double[] {0.1, 10};
             ann.ActivationFunction = ActivationFunctionEnum.BipolarSigmoidFunction;
-            ann.ActiveFunction_Params = new double[]{1.00};
+            ann.ActiveFunction_Params = new double[]{2.00};
 
 
             ann.Learn();
             //-0.5440211109;-0.2720105555
-            var ans =ann.Compute(new double[] { -0.544 }); 
+            var ans =ann.Compute(new double[] {0.28, 0.29}); 
 
             foreach (var valu in ans)
             {
-                Console.WriteLine("ans = {0}", valu);
+                Console.WriteLine("ans = {0}", Math.Round(valu,3));
             }
 
             Console.WriteLine("Final teaching err = {0}; MaxIter ={1}.", ann.FinalTeachingError, ann.FinalIterationsCount);
 
         }
 
+        static void LaunchEANN(double[][] matrix, double[] vector)
+        {
+        
+        }
 
 
 
-    }
+
+        }
 }

@@ -140,28 +140,94 @@ public class EANN: EvolutionaryMLBase
                 Chronos.Start();
                 Optimizer.Compute();
                 Chronos.Stop();
-
-
-
-
-
        }
             NeuralNetworkEngineEO neuralNet;
+            double LearningIndexScore, TestingIndexScore;
+
             private void Optimizer_ObjectiveFunction(double[] positions, ref double fitnessValue)
             {
                 neuralNet = new NeuralNetworkEngineEO(LearningInputs, LearningOutputs);
-                
+                neuralNet.LearningAlgorithm = this.Learning_Algorithm;
+
+                SetLearningAlgoParams(ref positions);
+
+                neuralNet.Learn();
+
+                double[] computedLearningOutputs = GetArray(neuralNet.Compute(LearningInputs));
+                double[] computedTestingOutputs = GetArray(neuralNet.Compute(TestingInputs));
+
+                LearningIndexScore = Statistics.Compute_DeterminationCoeff_R2(computedLearningOutputs, null);
+                TestingIndexScore = Statistics.Compute_DeterminationCoeff_R2(TestingOutputs, computedTestingOutputs);
+
+                fitnessValue = Math.Pow((2 - LearningIndexScore + TestingIndexScore), 2);
+
+                fitnessValue = ((0.01 * (neuralNet.LayersStruct.Length - 1)) + 1) * fitnessValue;
 
             }
 
-            private int _MinLearningIterations=1;
+
+            int HidenLayerCount = 1;
+            private void SetLearningAlgoParams(ref double[] positions)
+            {
+                switch (Learning_Algorithm)
+                {
+                    case LearningAlgorithmEnum.BackPropagationLearning | LearningAlgorithmEnum.LevenbergMarquardtLearning:
+
+                        neuralNet.ActivationFunction = (ActivationFunctionEnum)Convert.ToInt32(positions[0]);
+                        neuralNet.ActiveFunction_Params = new double[] { positions[1] };
+                        neuralNet.LearningAlgorithm_Params = new double[] { positions[2], positions[3]};
+                        neuralNet.LearningError = positions[4];
+                        neuralNet.LearningMaxIterations = Convert.ToInt32(positions[5]);
+
+                        HidenLayerCount = Math.Max((int)positions[6], 1);
+
+                        int[] networkStruct = new int[(HidenLayerCount + 1)];
+                        networkStruct[HidenLayerCount] = 1;
+
+                        for (int j = 0; j < HidenLayerCount; j++)
+                        {
+                            networkStruct[j] = Math.Max((int)positions[(j + 6)], 1);
+                        }
+                        for (int k = (HidenLayerCount + 6); k < positions.Length; k++)
+                        { positions[k] = 0; }
+
+                        neuralNet.LayersStruct = networkStruct;
+
+                        break;
+
+                    case LearningAlgorithmEnum.BayesianLevenbergMarquardtLearning:
+                        throw new NotImplementedException();
+                        break;
+                    default:
+                        this.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning;
+                        SetLearningAlgoParams(ref positions);
+                        break;
+                }
+                
+            }
+
+            public static double[] GetArray(double[][] dataset)
+            {
+                if (Equals(dataset, null)) { return null; }
+                int count = dataset.Length;
+                double[] result = new double[count];
+                for (int i = 0; i < count; i++)
+                {
+                    if (Equals(dataset[i], null)) { return null; }
+                    else { result[i] = dataset[i][0]; }
+
+                }
+                return result;
+            }
+
+            private int _MinLearningIterations=10;
             public int MinLearningIterations
             {
                 get { return _MinLearningIterations; }
                 set { _MinLearningIterations = Math.Max(1, value); }
             }
 
-            private int _MaxLearningIterations=1;
+            private int _MaxLearningIterations=100;
             public int MaxLearningIterations
             {
                 get { return _MaxLearningIterations; }
@@ -209,13 +275,14 @@ public class EANN: EvolutionaryMLBase
           switch(this.Learning_Algorithm)
 
                {
-                    case LearningAlgorithmEnum.BackPropagationLearning:
+                    case LearningAlgorithmEnum.BackPropagationLearning | LearningAlgorithmEnum.LevenbergMarquardtLearning :
                         
                     _SearchRanges = new List<MonoObjectiveEOALib.Range>
                      {
                     new MonoObjectiveEOALib.Range("Activation Function",0.8, 2.4),
                     new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.2, 5),
                     new MonoObjectiveEOALib.Range("Learning rate", 0.1, 1),
+                     new MonoObjectiveEOALib.Range("Momentum", 0.0, 0.01),
                     new MonoObjectiveEOALib.Range("Learning Err", 0.01, 0.1),
                     new MonoObjectiveEOALib.Range("Max Iteration (Kmax)", MinLearningIterations, MaxLearningIterations),
                     new MonoObjectiveEOALib.Range("Hiden Layer Number", 1, 5),
@@ -226,10 +293,8 @@ public class EANN: EvolutionaryMLBase
                     new MonoObjectiveEOALib.Range("Layer 5 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount)
                      };
 
-                        break;
-                    case LearningAlgorithmEnum.LevenbergMarquardtLearning:
-                        throw new NotImplementedException();
-                        break;
+                     break;
+                    
                     case LearningAlgorithmEnum.BayesianLevenbergMarquardtLearning:
                         throw new NotImplementedException();
                         break;
