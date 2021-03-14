@@ -27,7 +27,17 @@ namespace IOOperations
 				mData = new List<DataItem1D>();
 			}
 		}
-          string mName="DS-1";
+
+        public DataSerie1D(string name)
+        {
+            this.Name = name;
+            if (object.Equals(mData, null))
+            {
+                mData = new List<DataItem1D>();
+            }
+        }
+
+        string mName="DS-1";
           public string Name
           {
               get { return mName; }

@@ -460,10 +460,8 @@ namespace ArtificialNeuralNetwork
                 if (object.Equals(Network, null) == false)
                 {
                     for (int i = 0; i < iCount; i++)
-                    {
-
-                        double[] input = inputs[i];
-                        var result = Network.Compute(input);
+                    {                                               
+                        var result = Network.Compute(inputs[i]);
                         allResults[i] = result;
                     }
                 }

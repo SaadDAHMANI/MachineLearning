@@ -70,12 +70,20 @@ public class EANN: EvolutionaryMLBase
          }
 
 
-     DataSerie1D _BestChart; 
-          
+     DataSerie1D _BestChart;
+
+     private double _BestScore = double.MaxValue;
+     public double BestScore { get { return _BestScore; }}
+
+     private double  _BestLearningScore = double.NaN;
+     public double BestLearningScore { get { return _BestLearningScore;}}
+
+     private double _BestTestingScore = double.NaN;
+     public double BestTestingScore { get { return _BestTestingScore; } }
+
      public DataSerie1D BestChart {get {return _BestChart;}}
 
-       public DataSerie1D HidenLayerStructure { get; set;}
-
+     public DataSerie1D HidenLayerStructure { get; set;}
 
        NeuralNetworkEngineEO _BestNeuralNetwork;
         public NeuralNetworkEngineEO BestNeuralNetwork
@@ -123,24 +131,43 @@ public class EANN: EvolutionaryMLBase
     }
       public override void LearnEO()
        {
-                if (CheckData()) { return;}
+                if (!CheckData()) { return;}
        
                 Initialize();
 
                 Optimizer = new MonoObjectiveEOALib.PSOGSA_Optimizer();
+                
                 Optimizer.Dimensions_D = GetSearchSpaceDimension(this.Learning_Algorithm);
                 Optimizer.MaxIterations = this.MaxIterations;
                 Optimizer.PopulationSize_N = this.PopulationSize;
                 Optimizer.SearchRanges = this.SearchRanges;
+
                 Optimizer.ObjectiveFunction += Optimizer_ObjectiveFunction;
 
                 if (Equals(Chronos, null)) { Chronos = new Stopwatch(); }
 
                 Chronos.Reset();
                 Chronos.Start();
+
                 Optimizer.Compute();
+                
                 Chronos.Stop();
-       }
+
+               if (!Equals(Optimizer.BestChart))
+                {
+                    _BestChart = new DataSerie1D("Best chart");
+                    
+                    int i = 1;
+
+                    foreach (double itm in Optimizer.BestChart)
+                    {
+                        _BestChart.Add(i.ToString(), itm);
+                        i += 1;
+                    }
+                }
+              
+            
+            }
             NeuralNetworkEngineEO neuralNet;
             double LearningIndexScore, TestingIndexScore;
 
@@ -156,12 +183,20 @@ public class EANN: EvolutionaryMLBase
                 double[] computedLearningOutputs = GetArray(neuralNet.Compute(LearningInputs));
                 double[] computedTestingOutputs = GetArray(neuralNet.Compute(TestingInputs));
 
-                LearningIndexScore = Statistics.Compute_DeterminationCoeff_R2(computedLearningOutputs, null);
+                LearningIndexScore = Statistics.Compute_DeterminationCoeff_R2(LearningOutputs, computedLearningOutputs);
                 TestingIndexScore = Statistics.Compute_DeterminationCoeff_R2(TestingOutputs, computedTestingOutputs);
 
-                fitnessValue = Math.Pow((2 - LearningIndexScore + TestingIndexScore), 2);
+                fitnessValue = Math.Pow((2 - LearningIndexScore - TestingIndexScore), 2);
 
                 fitnessValue = ((0.01 * (neuralNet.LayersStruct.Length - 1)) + 1) * fitnessValue;
+                              
+                if (fitnessValue < BestScore )
+                {
+                    _BestScore = fitnessValue;
+                    _BestNeuralNetwork = neuralNet;
+                    _BestLearningScore = LearningIndexScore;
+                    _BestTestingScore = TestingIndexScore;
+                }
 
             }
 
@@ -253,14 +288,11 @@ public class EANN: EvolutionaryMLBase
                
                 switch (LearningAlgo)
                 {
-                    case LearningAlgorithmEnum.BackPropagationLearning:
-                       return 13;
-                        break;
-                    case LearningAlgorithmEnum.LevenbergMarquardtLearning:
-                       return 10;
+                    case LearningAlgorithmEnum.BackPropagationLearning | LearningAlgorithmEnum.LevenbergMarquardtLearning :
+                       return 12;
                         break;
                     case LearningAlgorithmEnum.BayesianLevenbergMarquardtLearning:
-                        return 10;
+                        return 13;
                         break;
                     default:
                         return 13;
@@ -279,11 +311,11 @@ public class EANN: EvolutionaryMLBase
                         
                     _SearchRanges = new List<MonoObjectiveEOALib.Range>
                      {
-                    new MonoObjectiveEOALib.Range("Activation Function",0.8, 2.4),
-                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.2, 5),
-                    new MonoObjectiveEOALib.Range("Learning rate", 0.1, 1),
-                     new MonoObjectiveEOALib.Range("Momentum", 0.0, 0.01),
-                    new MonoObjectiveEOALib.Range("Learning Err", 0.01, 0.1),
+                    new MonoObjectiveEOALib.Range("Activation Function",1, 1),
+                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 2, 2),
+                    new MonoObjectiveEOALib.Range("Learning rate", 0.1, 0.1),
+                    new MonoObjectiveEOALib.Range("Momentum/Ajustement", 10,12),
+                    new MonoObjectiveEOALib.Range("Learning Err", 0.001, 0.01),
                     new MonoObjectiveEOALib.Range("Max Iteration (Kmax)", MinLearningIterations, MaxLearningIterations),
                     new MonoObjectiveEOALib.Range("Hiden Layer Number", 1, 5),
                     new MonoObjectiveEOALib.Range("Layer 1 Nodes count", MinHidenNeuronesCount, MaxHidenNeuronesCount),
@@ -306,9 +338,11 @@ public class EANN: EvolutionaryMLBase
                 }
       }
 
-    public override void Compute(double[][] inputs)
+    public override double[] Compute(double[][] inputs)
      {
-        
+        if (Equals(inputs, null)) { return null;}
+        if (Equals(BestNeuralNetwork, null)){ return null; }
+        return  GetArray(BestNeuralNetwork.Compute(inputs));
      }
 
     public static double[][] ConvertToJagged(double[] vector)

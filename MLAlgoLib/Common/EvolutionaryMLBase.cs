@@ -47,7 +47,7 @@ public abstract class EvolutionaryMLBase
      }
      public abstract void LearnEO();
      public abstract void Learn();
-     public abstract void Compute(double[][] inputs);
+     public abstract double[] Compute(double[][] inputs);
 
 }
 }

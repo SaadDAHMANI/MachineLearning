@@ -73,13 +73,16 @@ namespace ConsoleApp
             //if (!Equals(df.TrainingInput, null)) { Console.WriteLine("Training = {0}", df.TrainingInput.Length); }
 
             // // Luanch EOSVR with EOAlgo params.   
-            int n=3;
+            int n=2;
             int kmax=2;
 
-            //LaunchEOSVR(n,kmax);
+            LaunchEOSVR(n,kmax);
 
-            LaunchANN(df.TrainingInput, df.TrainingOutput);
+            Console.WriteLine("___________________________________________________");
 
+            //LaunchANN(df.TrainingInput, df.TrainingOutput);
+
+            LaunchANNEO(df, n, kmax);
 
         }
 
@@ -181,7 +184,6 @@ namespace ConsoleApp
 
         }
 
-
         static void LaunchANN(double[][] matrix, double[] vector)
         {
             
@@ -221,13 +223,50 @@ namespace ConsoleApp
 
         }
 
-        static void LaunchEANN(double[][] matrix, double[] vector)
+        static void LaunchANNEO(DataFormater dfr, int n, int kmax)
         {
-        
+            EANN annEo = new EANN(dfr.TrainingInput, dfr.TrainingOutput, dfr.TestingInput, dfr.TestingOutput);
+            
+            annEo.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning ;
+            annEo.MinLearningIterations = 50;
+            annEo.MaxLearningIterations = 100;
+
+            annEo.MinHidenNeuronesCount = 1;
+            annEo.MaxHidenNeuronesCount = 5;
+
+            annEo.MaxIterations = kmax;           
+            annEo.PopulationSize = n;
+           
+            annEo.LearnEO();
+
+            Console.WriteLine("Best learning scroe = {0} ; Best testing score = {1}", annEo.BestLearningScore, annEo.BestTestingScore);
+
+           foreach (DataItem1D itm in annEo.BestChart.Data)
+            {
+                Console.WriteLine(itm.Title, itm.X_Value);
+            }
+
+
+            double[][] xy = new double[][]
+            {
+               new double []{0.8, 0.12},
+               new double []{0.16, 0.10},
+               new double []{0.24, 0.26},
+               new double []{0.35, 0.10}
+            };
+
+            var z = annEo.Compute(xy);
+
+            if (Equals(z, null)) { return; }
+            foreach (double value in z)
+            {
+                Console.WriteLine("z = {0}", Math.Round(value, 3));
+            }
+
         }
 
 
 
 
-        }
+    }
 }

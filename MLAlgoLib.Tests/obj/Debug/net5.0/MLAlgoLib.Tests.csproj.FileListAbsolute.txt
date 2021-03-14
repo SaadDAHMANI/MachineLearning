@@ -1,7 +1,3 @@
-F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.GeneratedMSBuildEditorConfig.editorconfig
-F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.AssemblyInfoInputs.cache
-F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.AssemblyInfo.cs
-F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.csproj.CoreCompileInputs.cache
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\bin\Debug\net5.0\testhost.dll
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\bin\Debug\net5.0\testhost.exe
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
@@ -108,6 +104,10 @@ F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\bin\Debug\net5.0\MLAlgoLib.pdb
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\bin\Debug\net5.0\IOOperations.pdb
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\bin\Debug\net5.0\MonoObjectiveEOALib.pdb
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.csprojAssemblyReference.cache
+F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.GeneratedMSBuildEditorConfig.editorconfig
+F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.AssemblyInfoInputs.cache
+F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.AssemblyInfo.cs
+F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.csproj.CoreCompileInputs.cache
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.csproj.CopyComplete
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\MLAlgoLib.Tests.dll
 F:\VS19_Apps\MachineLearning\MLAlgoLib.Tests\obj\Debug\net5.0\ref\MLAlgoLib.Tests.dll
