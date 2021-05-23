@@ -81,7 +81,7 @@ namespace ConsoleApp
 
             if (!int.TryParse(Console.ReadLine(), out kmax)){kmax=2;}
 
-              Console.WriteLine("N = {0}, Kmax={1}",n, kmax); 
+              Console.WriteLine("Computation by : N = {0}, Kmax={1}",n, kmax); 
 
             LaunchEOSVR(n,kmax);
 
@@ -357,6 +357,14 @@ namespace ConsoleApp
            
             
         }    
+        static void SaveResults(EANN eo_ann, string filePath)
+        {
+            if(Equals(eo_ann, null)){return;}
+            if(Equals(eo_ann.Best_Chart, null)){return;}
+            if(Equals(eo_ann.BestSolution, null)){return;}
+            
 
+
+        }
     }
 }
