@@ -72,6 +72,16 @@ namespace ConsoleApp
             // // Luanch EOSVR with EOAlgo params.   
             int n=2;
             int kmax=1;
+            
+            Console.WriteLine("Saisir la taille de la population de recherche < N > (nombre entier > 1):");
+            
+            if (!int.TryParse(Console.ReadLine(), out n)){n=2;}         
+                        
+            Console.WriteLine("Saisir le nombre d'itérations < Kmax > (nombre entier > 0):");
+
+            if (!int.TryParse(Console.ReadLine(), out kmax)){kmax=2;}
+
+              Console.WriteLine("N = {0}, Kmax={1}",n, kmax); 
 
             LaunchEOSVR(n,kmax);
 
