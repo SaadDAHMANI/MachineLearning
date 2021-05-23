@@ -6028,11 +6028,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib.Tests\\MLAlgoLib.Tests.csproj",
+      "projectUniqueName": "E:\\VS19_Apps\\MachineLearning\\MLAlgoLib.Tests\\MLAlgoLib.Tests.csproj",
       "projectName": "MLAlgoLib.Tests",
-      "projectPath": "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib.Tests\\MLAlgoLib.Tests.csproj",
+      "projectPath": "E:\\VS19_Apps\\MachineLearning\\MLAlgoLib.Tests\\MLAlgoLib.Tests.csproj",
       "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
-      "outputPath": "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib.Tests\\obj\\",
+      "outputPath": "E:\\VS19_Apps\\MachineLearning\\MLAlgoLib.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6049,8 +6049,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj": {
-              "projectPath": "F:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj"
+            "E:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj": {
+              "projectPath": "E:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj"
             }
           }
         }
@@ -6101,7 +6101,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -70,8 +70,8 @@ namespace ConsoleApp
             //if (!Equals(df.TrainingInput, null)) { Console.WriteLine("Training = {0}", df.TrainingInput.Length); }
 
             // // Luanch EOSVR with EOAlgo params.   
-            int n=5;
-            int kmax=10;
+            int n=2;
+            int kmax=2;
 
             LaunchEOSVR(n,kmax);
 

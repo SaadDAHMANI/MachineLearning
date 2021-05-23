@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {}
+    "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj": {}
   },
   "projects": {
-    "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {
+    "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj",
+        "projectUniqueName": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj",
         "projectName": "IOOperations",
-        "projectPath": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj",
+        "projectPath": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj",
         "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
-        "outputPath": "F:\\VS19_Apps\\MachineLearning\\IOOPerations\\obj\\",
+        "outputPath": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

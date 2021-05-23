@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj": {}
+    "E:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj": {}
   },
   "projects": {
-    "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj": {
+    "E:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj",
+        "projectUniqueName": "E:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj",
         "projectName": "MonoObjectiveEOALib",
-        "projectPath": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj",
+        "projectPath": "E:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\MonoObjectiveEOALib.vbproj",
         "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
-        "outputPath": "F:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\obj\\",
+        "outputPath": "E:\\VS19_Apps\\MachineLearning\\MonoObjectiveEOALib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
