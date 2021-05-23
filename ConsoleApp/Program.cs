@@ -315,16 +315,24 @@ namespace ConsoleApp
                    
                    strb.AppendLine("Best_Chart;");
                    
-                   for (int i=0; i<eo_svr.BestChart.Length; i++)
+                   for (int i=0; i < eo_svr.BestChart.Count(); i++)
                    {
                        strb.Append(eo_svr.BestChart[i].ToString()).AppendLine(";");
                    }
 
-                    strb.AppendLine("Best solution;");
-                   for (int i=0; i<eo_svr.BestSolution.Length; i++)
+                   strb.AppendLine("Best Learning score;");
+                   strb.Append(eo_svr.BestLearningScore).AppendLine(";"); 
+
+                   strb.AppendLine("Best Testing Score;"); 
+                   strb.Append(eo_svr.BestTestingScore).AppendLine(";"); 
+
+                   strb.AppendLine("Best solution;");
+                   
+                   for (int i=0; i< eo_svr.BestSolution.Count(); i++)
                    {
                        strb.Append(eo_svr.BestSolution[i].ToString()).AppendLine(";");
                    }
+                   
                    sw.Write(strb.ToString());
                    sw.Flush();
                    sw.Close();
@@ -335,7 +343,7 @@ namespace ConsoleApp
 
 
 
-           
+
            
             
         }    
