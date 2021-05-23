@@ -71,7 +71,7 @@ namespace ConsoleApp
 
             // // Luanch EOSVR with EOAlgo params.   
             int n=2;
-            int kmax=2;
+            int kmax=1;
 
             LaunchEOSVR(n,kmax);
 
@@ -97,17 +97,19 @@ namespace ConsoleApp
             eo_svr.Param_Tolerance = 0.001; //0.001
 
             // Console.WriteLine("---------> SVR : ");
-            eo_svr.Learn();    
+            //eo_svr.Learn();    
             
                       
             //Console.WriteLine("---------> EO-SVR : ");
-            //eo_svr.LearnEO();
+            eo_svr.LearnEO();
 
             Console.WriteLine("Best score = {0}", eo_svr.BestScore);
-           
+            if (!Equals(eo_svr.BestSolution, null)) {
+            Console.WriteLine("Best solution : Sigma of Gaussian = {0}; Complexity = {1}; Tolerance = {2}; Epsilon = {3}.", eo_svr.BestSolution[0], eo_svr.BestSolution[1], eo_svr.BestSolution[2], eo_svr.BestSolution[3]);
+            }
            // Console.WriteLine("Best soltion : SigmaKernel= {0}; Complexity_C= {1}; Tolerance= {2}; Epsilon= {3}", eo_svr.BestSolution[0],eo_svr.BestSolution[1],eo_svr.BestSolution[2],eo_svr.BestSolution[3]);
   
-            Console.WriteLine("Best learning index = {0} ; Best testing index = {1}", eo_svr.BestLearningScore, eo_svr.BestTestingScore);
+            Console.WriteLine("EO-SVR :->Best learning index = {0} ; EO-SVR :-> Best testing index = {1}", eo_svr.BestLearningScore, eo_svr.BestTestingScore);
 
             if (!Equals(eo_svr.BestChart, null))
             {
@@ -117,6 +119,7 @@ namespace ConsoleApp
                 }
             }
             
+            SaveResults(eo_svr,"D:\\SVR.txt");
 
             //double[][] xy = new double[][] 
             //{
@@ -263,7 +266,7 @@ namespace ConsoleApp
            
             annEo.LearnEO();
 
-            Console.WriteLine("Best learning scroe = {0} ; Best testing score = {1}", annEo.BestLearningScore, annEo.BestTestingScore);
+            Console.WriteLine("EO-ANN :-> Best learning scroe = {0} ; EO-ANN :-> Best testing score = {1}", annEo.BestLearningScore, annEo.BestTestingScore);
 
            foreach (var itm in annEo.BestChart)
             {
@@ -298,8 +301,44 @@ namespace ConsoleApp
 
         }
 
+        static void SaveResults(EOSVR eo_svr, string filePath)
+        {
+            if (Equals(eo_svr, null)){return;}
+            if(Equals(eo_svr.BestChart, null)){return;}
+            if(Equals(eo_svr.BestSolution, null)){return;}
+
+           using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+           {
+               using (StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.UTF8))
+               {
+                   System.Text.StringBuilder strb = new System.Text.StringBuilder();
+                   
+                   strb.AppendLine("Best_Chart;");
+                   
+                   for (int i=0; i<eo_svr.BestChart.Length; i++)
+                   {
+                       strb.Append(eo_svr.BestChart[i].ToString()).AppendLine(";");
+                   }
+
+                    strb.AppendLine("Best solution;");
+                   for (int i=0; i<eo_svr.BestSolution.Length; i++)
+                   {
+                       strb.Append(eo_svr.BestSolution[i].ToString()).AppendLine(";");
+                   }
+                   sw.Write(strb.ToString());
+                   sw.Flush();
+                   sw.Close();
+                   fs.Close(); 
+               }
+           }
 
 
+
+
+           
+           
+            
+        }    
 
     }
 }
