@@ -67,10 +67,10 @@ public class EANN: EvolutionaryMLBase
          }
 
 
-     DataSerie1D _BestChart;
+     //DataSerie1D _BestChart;
 
      private double _BestScore = double.MaxValue;
-     public double BestScore { get { return _BestScore; }}
+     public override double BestScore { get { return _BestScore; }}
 
      private double  _BestLearningScore = double.NaN;
      public double BestLearningScore { get { return _BestLearningScore;}}
@@ -78,7 +78,7 @@ public class EANN: EvolutionaryMLBase
      private double _BestTestingScore = double.NaN;
      public double BestTestingScore { get { return _BestTestingScore; } }
 
-     public List<double> BestChart { get { return Optimizer.BestChart;} }
+     public override List<double> BestChart { get { return Optimizer.BestChart;} }
 
      public DataSerie1D HidenLayerStructure { get; set;}
 

@@ -6,7 +6,7 @@
 // For genetic algorithm:
 // dotnet add package Accord.Genetic --version 3.8.0 
 //----------------------------------------------------------------------
-// Written by : Saad Dahmani (s.dahmani@univ-bouira.dz)
+// Written by : Saad Dahmani (s.dahmani@univ-bouira.dz; sd.dahmani2000@gmail.com)
 //**********************************************************************
 
 using System;
@@ -349,19 +349,12 @@ namespace ConsoleApp
                    fs.Close(); 
                }
            }
-
-
-
-
-
-           
-            
         }    
         static void SaveResults(EANN eo_ann, string filePath)
         {
             if(Equals(eo_ann, null)){return;}
-            if(Equals(eo_ann.Best_Chart, null)){return;}
-            if(Equals(eo_ann.BestSolution, null)){return;}
+            if(Equals(eo_ann.BestChart, null)){return;}
+            if(Equals(eo_ann, null)){return;}
             
 
 

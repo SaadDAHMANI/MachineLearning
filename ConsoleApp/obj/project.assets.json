@@ -392,8 +392,8 @@
     },
     "IOOperations/1.0.0": {
       "type": "project",
-      "path": "../IOOperations/IOOperations.csproj",
-      "msbuildProject": "../IOOperations/IOOperations.csproj"
+      "path": "../IOOPerations/IOOperations.csproj",
+      "msbuildProject": "../IOOPerations/IOOperations.csproj"
     },
     "MLAlgoLib/1.0.0": {
       "type": "project",
@@ -488,7 +488,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

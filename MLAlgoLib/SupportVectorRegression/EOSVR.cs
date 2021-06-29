@@ -172,7 +172,7 @@ public class EOSVR
             }
 
         private double _BestScore; 
-        public double BestScore
+        public double BesrScore
         {get {return _BestScore;}}
 
        public List<double> BestChart 
