@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {}
+    "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj": {}
   },
   "projects": {
-    "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {
+    "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj",
+        "projectUniqueName": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj",
         "projectName": "IOOperations",
-        "projectPath": "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj",
+        "projectPath": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj",
         "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
-        "outputPath": "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\obj\\",
+        "outputPath": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",

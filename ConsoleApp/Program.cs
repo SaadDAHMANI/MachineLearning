@@ -79,7 +79,7 @@ namespace ConsoleApp
             int n=2;
 
             int kmax=2;
-            
+                                   
             Console.WriteLine("Saisir la taille de la population de recherche < N > (nombre entier > 1):");
             
             if (!int.TryParse(Console.ReadLine(), out n)){n=2;}         
@@ -89,14 +89,34 @@ namespace ConsoleApp
             if (!int.TryParse(Console.ReadLine(), out kmax)){kmax=2;}
 
               Console.WriteLine("Computation by : N = {0}, Kmax={1}",n, kmax); 
+         
+           
+            Console.WriteLine("Voulez-vous lancer le EO-SVR ?(if YES , type y):");
 
-            LaunchEOSVR(n,kmax);
+            var ans = Console.ReadLine();
+            
+            if (ans=="y" || ans =="yes") {
+                                         
+             LaunchEOSVR(n,kmax);
 
             Console.WriteLine("_______________________________________________________________________");
+             } 
 
-            //LaunchANN(df.TrainingInput, df.TrainingOutput);
+            Console.WriteLine("Voulez-vous lancer le EO-ANN ?(if YES , type y):");
 
-            //LaunchANNEO(df, n, kmax);
+             ans = Console.ReadLine();
+            
+            if (ans=="y" || ans =="yes") {
+
+             LaunchANNEO(df, n, kmax);
+              //LaunchANN(df.TrainingInput, df.TrainingOutput);
+
+
+            }    
+
+           
+
+           
 
         }
 
@@ -259,10 +279,10 @@ namespace ConsoleApp
             var ranges = new List<MonoObjectiveEOALib.Range>
                      {
                     new MonoObjectiveEOALib.Range("Activation Function",2, 2.5),
-                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.1, 2.5),
+                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.1, 5),
                     new MonoObjectiveEOALib.Range("Learning rate", 0.05, 0.1),
                     new MonoObjectiveEOALib.Range("Momentum/Ajustement", 10,12),
-                    new MonoObjectiveEOALib.Range("Learning Err", 0.001, 0.01),
+                    new MonoObjectiveEOALib.Range("Learning Err", 0.001, 0.001),
                     new MonoObjectiveEOALib.Range("Max Iteration (Kmax)", kminL, kmaxL),
                     new MonoObjectiveEOALib.Range("Hiden Layer Number", 1, 5),
                     new MonoObjectiveEOALib.Range("Layer 1 Nodes count",minHLNeurones, maxHLNeurones),
@@ -285,10 +305,12 @@ namespace ConsoleApp
 
             Console.WriteLine("EO-ANN :-> Best learning scroe = {0} ; EO-ANN :-> Best testing score = {1}", annEo.BestLearningScore, annEo.BestTestingScore);
 
-           foreach (var itm in annEo.BestChart)
+            foreach (var itm in annEo.BestChart)
             {
                 Console.WriteLine(itm);
             }
+
+             SaveResults(annEo,"C:\\SSL\\ANN.txt");
 
             //double[][] xy = new double[][]
             // {
