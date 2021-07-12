@@ -392,8 +392,8 @@
     },
     "IOOperations/1.0.0": {
       "type": "project",
-      "path": "../IOOperations/IOOperations.csproj",
-      "msbuildProject": "../IOOperations/IOOperations.csproj"
+      "path": "../IOOPerations/IOOperations.csproj",
+      "msbuildProject": "../IOOPerations/IOOperations.csproj"
     },
     "MLAlgoLib/1.0.0": {
       "type": "project",
@@ -442,8 +442,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj": {
-              "projectPath": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj"
+            "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {
+              "projectPath": "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj"
             },
             "E:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj": {
               "projectPath": "E:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj"

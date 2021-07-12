@@ -345,9 +345,9 @@ namespace ConsoleApp
 
                    strb.AppendLine("Best solution;");
                    
-                   for (int i=0; i< eo_svr.BestSolution.Count(); i++)
+                   for (int i=0; i< eo_svr.BestSolution.Length; i++)
                    {
-                       strb.Append(eo_svr.BestSolution[i].ToString()).AppendLine(";");
+                       strb.Append(eo_svr.BestSolution[i]).AppendLine(";");
                    }
                    
                    sw.Write(strb.ToString());
@@ -362,9 +362,43 @@ namespace ConsoleApp
             if(Equals(eo_ann, null)){return;}
             if(Equals(eo_ann.BestChart, null)){return;}
             if(Equals(eo_ann, null)){return;}
+
+            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+           {
+               using (StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.UTF8))
+               {
+
+                    System.Text.StringBuilder strb = new System.Text.StringBuilder();
+                   
+                   strb.AppendLine("Best_Chart;");
+                   
+                   for (int i=0; i < eo_ann.BestChart.Count; i++)
+                   {
+                       strb.Append(eo_ann.BestChart[i]).AppendLine(";");
+                   }
+
+                   strb.AppendLine("Best Learning score;");
+                   strb.Append(eo_ann.BestLearningScore).AppendLine(";"); 
+
+                   strb.AppendLine("Best Testing Score;"); 
+                   strb.Append(eo_ann.BestTestingScore).AppendLine(";"); 
+
+                   strb.AppendLine("Best solution;");
+                   
+                   for (int i=0; i< eo_ann.BestSolution.Length; i++)
+                   {
+                       strb.Append(eo_ann.BestSolution[i]).AppendLine(";");
+                   }
+                   
+                   sw.Write(strb.ToString());
+                   sw.Flush();
+                   sw.Close();
+                   fs.Close();        
+                       
             
-
-
+               }
+               }
+            
         }
     }
 }

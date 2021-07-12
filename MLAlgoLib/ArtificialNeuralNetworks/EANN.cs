@@ -80,6 +80,8 @@ public class EANN: EvolutionaryMLBase
 
      public override List<double> BestChart { get { return Optimizer.BestChart;} }
 
+     public double[] BestSolution {get {return Optimizer.BestSolution;}}   
+
      public DataSerie1D HidenLayerStructure { get; set;}
 
        NeuralNetworkEngineEO _BestNeuralNetwork;
