@@ -83,7 +83,7 @@ public class EANN: EvolutionaryMLBase
      public DataSerie1D HidenLayerStructure { get; set;}
 
        NeuralNetworkEngineEO _BestNeuralNetwork;
-        public NeuralNetworkEngineEO BestNeuralNetwork
+     public NeuralNetworkEngineEO BestNeuralNetwork
        {get {return _BestNeuralNetwork;}}
 
             private bool CheckData()

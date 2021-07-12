@@ -1,0 +1,11 @@
+E:\VS19_Apps\MachineLearning\IOOPerations\bin\Release\net5.0\IOOperations.deps.json
+E:\VS19_Apps\MachineLearning\IOOPerations\bin\Release\net5.0\IOOperations.dll
+E:\VS19_Apps\MachineLearning\IOOPerations\bin\Release\net5.0\ref\IOOperations.dll
+E:\VS19_Apps\MachineLearning\IOOPerations\bin\Release\net5.0\IOOperations.pdb
+E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.AssemblyInfoInputs.cache
+E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.AssemblyInfo.cs
+E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.csproj.CoreCompileInputs.cache
+E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.dll
+E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\ref\IOOperations.dll
+E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.pdb

@@ -172,7 +172,7 @@ public class EOSVR
             }
 
         private double _BestScore; 
-        public double BesrScore
+        public double BestScore
         {get {return _BestScore;}}
 
        public List<double> BestChart 
@@ -218,10 +218,10 @@ public class EOSVR
          int D=4;   
         
         List<MonoObjectiveEOALib.Range> ranges = new List<MonoObjectiveEOALib.Range>();
-        ranges.Add(new MonoObjectiveEOALib.Range(0.5, 2)); //Sigma of Gaussian
-        ranges.Add(new MonoObjectiveEOALib.Range(90, 500)); // Complexity
+        ranges.Add(new MonoObjectiveEOALib.Range(0.1, 10)); //Sigma of Gaussian
+        ranges.Add(new MonoObjectiveEOALib.Range(1, 500)); // Complexity
         ranges.Add(new MonoObjectiveEOALib.Range(0.001, 0.001)); // Tolerance        
-       ranges.Add(new MonoObjectiveEOALib.Range(0.001, 0.001)); // Epsilon
+        ranges.Add(new MonoObjectiveEOALib.Range(0.001, 0.05)); // Epsilon
 
         Optimizer= new PSOGSA_Optimizer(PopulationSize,D,ranges,MaxIterations);
         Optimizer.ObjectiveFunction += Optimizer_ObjectiveFunction;  
@@ -265,17 +265,21 @@ public double BestTestingScore=double.MinValue;
             _Computed_TestingOutputs=svm.Score(TestingInputs);
 
             // Compute statistical 
-            LearningIndex = Statistics.Compute_DeterminationCoeff_R2(LearningOutputs,_Computed_LearningOutputs);            
-            TestingIndex =Statistics.Compute_DeterminationCoeff_R2(TestingOutputs, _Computed_TestingOutputs);
-            
-            Console.WriteLine("indexL= {0} | indexT= {1}", LearningIndex, TestingIndex);
+            LearningIndex = Statistics.Compute_RMSE(LearningOutputs,_Computed_LearningOutputs);            
+            TestingIndex =Statistics.Compute_RMSE(TestingOutputs, _Computed_TestingOutputs);
+
+            // Compute correlation R for learning and testing to controle results :
+              var Rlern  = Statistics.Compute_CorrelationCoeff_R(LearningOutputs,_Computed_LearningOutputs); 
+              var Rtest = Statistics.Compute_CorrelationCoeff_R(TestingOutputs, _Computed_TestingOutputs);  
+        
+            Console.WriteLine("indexL= {0} | indexT= {1} ; Correlation : R (learn) = {2} | R (test) = {3}", LearningIndex, TestingIndex, Rlern,Rtest);
             if (BestLearningScore<LearningIndex && BestTestingScore < TestingIndex)
             {
              BestLearningScore=LearningIndex;
              BestTestingScore=TestingIndex;
              }
             //set the fitness value
-            fitnessValue=Math.Pow((2-LearningIndex+TestingIndex),2);   
+            fitnessValue=Math.Pow(LearningIndex,2)+ Math.Pow(TestingIndex,2);   
  
      }
 

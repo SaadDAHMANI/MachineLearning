@@ -4,14 +4,14 @@
     "E:\\VS19_Apps\\MachineLearning\\MLAlgoLib\\MLAlgoLib.csproj": {}
   },
   "projects": {
-    "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj": {
+    "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj",
+        "projectUniqueName": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj",
         "projectName": "IOOperations",
-        "projectPath": "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\IOOperations.csproj",
+        "projectPath": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\IOOperations.csproj",
         "packagesPath": "C:\\Users\\SD\\.nuget\\packages\\",
-        "outputPath": "E:\\VS19_Apps\\MachineLearning\\IOOPerations\\obj\\",
+        "outputPath": "E:\\VS19_Apps\\MachineLearning\\IOOperations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SD\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -129,7 +129,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -183,7 +183,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

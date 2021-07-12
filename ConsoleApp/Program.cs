@@ -39,7 +39,7 @@ namespace ConsoleApp
 
             Console.WriteLine("Hello SVR & ANN!");
 
-            //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Test_Wail.csv";
+
 
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Ex.csv";
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Exemple.csv";
@@ -47,8 +47,8 @@ namespace ConsoleApp
             //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_ExempleSinX.csv";
 
             // //QC_Sidi_Aissa SSL :
-            // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa.csv";
-            //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
+            //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa.csv";
+            // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
 
 
             // //Beni-Bahdel_Dame_3Q :
@@ -56,14 +56,20 @@ namespace ConsoleApp
 
             // //Station_Ain_El_Assel_Dataset_Pf(Q) :
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Station_Ain_El_Assel_Dataset_Pf(Q).csv";
-            string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Station_Ain_El_Assel_Dataset_Pf(Q)_Standard.csv";
-            
-            LoadData(file);
+            //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Station_Ain_El_Assel_Dataset_Pf(Q)_Standard.csv";
+            // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Station_Ain_El_Assel_Dataset_1_Standard.csv";
 
+            ////QC_Sidi_Aissa SSL :
+            string file = @"C:\SSL\QC_Sidi_Aissa.csv";
+            // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
+
+
+            LoadData(file);
+    
             df = new DataFormater(DataSet);
             df.TrainingPourcentage = 70;
 
-            df.Format(2,0,1);
+            df.Format(1,0);
 
             // Console.WriteLine("LearnIn = {0}, LearnOut = {1}, TestIn = {2}, TestOut = {3}",df.TrainingInput.Length, df.TrainingOutput.Length, df.TestingInput.Length, df.TestingOutput.Length );
 
@@ -71,7 +77,8 @@ namespace ConsoleApp
 
             // // Luanch EOSVR with EOAlgo params.   
             int n=2;
-            int kmax=1;
+
+            int kmax=2;
             
             Console.WriteLine("Saisir la taille de la population de recherche < N > (nombre entier > 1):");
             
@@ -89,7 +96,7 @@ namespace ConsoleApp
 
             //LaunchANN(df.TrainingInput, df.TrainingOutput);
 
-            LaunchANNEO(df, n, kmax);
+            //LaunchANNEO(df, n, kmax);
 
         }
 
@@ -104,13 +111,13 @@ namespace ConsoleApp
             eo_svr.Sigma_Kernel=1.1; //1.1; //1.336687063023768
             eo_svr.Param_Complexity = 100; // 100; //56.8121658157614
             eo_svr.Param_Epsilon = 0.001; // 0.001
-            eo_svr.Param_Tolerance = 0.001; //0.001
-
+            eo_svr.Param_Tolerance = 0.001;// 0.001
+            
             // Console.WriteLine("---------> SVR : ");
             //eo_svr.Learn();    
             
                       
-            //Console.WriteLine("---------> EO-SVR : ");
+            Console.WriteLine("---------> EO-SVR : ");
             eo_svr.LearnEO();
 
             Console.WriteLine("Best score = {0}", eo_svr.BestScore);
@@ -129,7 +136,7 @@ namespace ConsoleApp
                 }
             }
             
-            SaveResults(eo_svr,"D:\\SVR.txt");
+            SaveResults(eo_svr,"C:\\SSL\\SVR.txt");
 
             //double[][] xy = new double[][] 
             //{

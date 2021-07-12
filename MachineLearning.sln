@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{73325774-DBA1-4148-9760-50F5CE8C3624}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{73325774-DBA1-4148-9760-50F5CE8C3624}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOOperations", "IOOPerations\IOOperations.csproj", "{20FAF599-2C82-44CF-871A-E1F446919D2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOOperations", "IOOPerations\IOOperations.csproj", "{20FAF599-2C82-44CF-871A-E1F446919D2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLAlgoLib", "MLAlgoLib\MLAlgoLib.csproj", "{B6BCF0F8-A97E-4EF6-93CE-CD6243972267}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLAlgoLib", "MLAlgoLib\MLAlgoLib.csproj", "{B6BCF0F8-A97E-4EF6-93CE-CD6243972267}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MonoObjectiveEOALib", "MonoObjectiveEOALib\MonoObjectiveEOALib.vbproj", "{41F026DC-C7F3-4515-8DA3-C4D1F07E3812}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "MonoObjectiveEOALib", "MonoObjectiveEOALib\MonoObjectiveEOALib.vbproj", "{41F026DC-C7F3-4515-8DA3-C4D1F07E3812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLAlgoLib.Tests", "MLAlgoLib.Tests\MLAlgoLib.Tests.csproj", "{DC31A44F-28B9-4D5F-AC19-304F5AED1F67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLAlgoLib.Tests", "MLAlgoLib.Tests\MLAlgoLib.Tests.csproj", "{DC31A44F-28B9-4D5F-AC19-304F5AED1F67}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ML_Setup", "ML_Setup\ML_Setup.vdproj", "{91FDA1A1-C009-46F7-A230-3506CE72F92C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{73325774-DBA1-4148-9760-50F5CE8C3624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -86,5 +85,17 @@ Global
 		{DC31A44F-28B9-4D5F-AC19-304F5AED1F67}.Release|x64.Build.0 = Release|Any CPU
 		{DC31A44F-28B9-4D5F-AC19-304F5AED1F67}.Release|x86.ActiveCfg = Release|Any CPU
 		{DC31A44F-28B9-4D5F-AC19-304F5AED1F67}.Release|x86.Build.0 = Release|Any CPU
+		{91FDA1A1-C009-46F7-A230-3506CE72F92C}.Debug|Any CPU.ActiveCfg = Debug
+		{91FDA1A1-C009-46F7-A230-3506CE72F92C}.Debug|x64.ActiveCfg = Debug
+		{91FDA1A1-C009-46F7-A230-3506CE72F92C}.Debug|x86.ActiveCfg = Debug
+		{91FDA1A1-C009-46F7-A230-3506CE72F92C}.Release|Any CPU.ActiveCfg = Release
+		{91FDA1A1-C009-46F7-A230-3506CE72F92C}.Release|x64.ActiveCfg = Release
+		{91FDA1A1-C009-46F7-A230-3506CE72F92C}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4800C20E-9E90-4720-978F-CC9291E95036}
 	EndGlobalSection
 EndGlobal
