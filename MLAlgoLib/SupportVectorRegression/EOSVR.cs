@@ -272,7 +272,7 @@ public double BestTestingScore=double.MinValue;
               var Rlern  = Statistics.Compute_CorrelationCoeff_R(LearningOutputs,_Computed_LearningOutputs); 
               var Rtest = Statistics.Compute_CorrelationCoeff_R(TestingOutputs, _Computed_TestingOutputs);  
         
-            Console.WriteLine("indexL= {0} | indexT= {1} ; Correlation : R (learn) = {2} | R (test) = {3}", LearningIndex, TestingIndex, Rlern,Rtest);
+            Console.WriteLine("Index (learn) = {0} | Index (test) = {1} ; Correlation : R (learn) = {2} | R (test) = {3}", LearningIndex, TestingIndex, Rlern,Rtest);
             if (BestLearningScore<LearningIndex && BestTestingScore < TestingIndex)
             {
              BestLearningScore=LearningIndex;

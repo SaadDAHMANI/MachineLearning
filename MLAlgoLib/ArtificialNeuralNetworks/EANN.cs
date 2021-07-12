@@ -166,12 +166,19 @@ public class EANN: EvolutionaryMLBase
                 double[] computedLearningOutputs = GetArray(neuralNet.Compute(LearningInputs));
                 double[] computedTestingOutputs = GetArray(neuralNet.Compute(TestingInputs));
 
-                LearningIndexScore = Statistics.Compute_DeterminationCoeff_R2(LearningOutputs, computedLearningOutputs);
-                TestingIndexScore = Statistics.Compute_DeterminationCoeff_R2(TestingOutputs, computedTestingOutputs);
+                // Compute statistical params for the objective function:
+                LearningIndexScore = Statistics.Compute_RMSE(LearningOutputs, computedLearningOutputs);
+                TestingIndexScore = Statistics.Compute_RMSE(TestingOutputs, computedTestingOutputs);
 
-                fitnessValue = Math.Pow((2 - LearningIndexScore - TestingIndexScore), 2);
+              // Compute correlation R for learning and testing to controle results :
+              var Rlern  = Statistics.Compute_CorrelationCoeff_R(LearningOutputs, computedLearningOutputs); 
+              var Rtest = Statistics.Compute_CorrelationCoeff_R(TestingOutputs, computedTestingOutputs);  
+        
+              Console.WriteLine("Index (learn)= {0} | Index (test)= {1} ; Correlation : R (learn) = {2} | R (test) = {3}", LearningIndexScore, TestingIndexScore, Rlern,Rtest);
+       
+               fitnessValue = Math.Pow(LearningIndexScore,2) + Math.Pow(TestingIndexScore, 2);
 
-                fitnessValue = ((0.01 * (neuralNet.LayersStruct.Length - 1)) + 1) * fitnessValue;
+                //fitnessValue = ((0.01 * (neuralNet.LayersStruct.Length - 1)) + 1) * fitnessValue;
                               
                 if (fitnessValue < BestScore )
                 {
