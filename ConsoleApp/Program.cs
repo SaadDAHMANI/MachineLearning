@@ -30,7 +30,7 @@ namespace ConsoleApp
 {
     class Program
     {       
-         static string fileName_DST;
+         //static string fileName_DST;
          static DataSerieTD DataSet;
          static DataFormater df;   
 
@@ -47,7 +47,6 @@ namespace ConsoleApp
             // //QC_Sidi_Aissa SSL :
             //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa.csv";
             //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
-
 
             // //Beni-Bahdel_Dame_3Q :
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Beni-Bahdel_Dame_3Q.csv";
@@ -95,10 +94,9 @@ namespace ConsoleApp
 
             if (!int.TryParse(Console.ReadLine(), out kmax)){kmax=2;}
 
-              Console.WriteLine("Computation by : N = {0}, Kmax={1}",n, kmax); 
-         
-           
-            Console.WriteLine("Voulez-vous lancer le EO-SVR ?(if YES , type y):");
+            Console.WriteLine("Computation by : N = {0}, Kmax={1}",n, kmax); 
+                    
+            Console.WriteLine("Voulez-vous lancer le EO-SVR ?(if YES , type y; n if NO):");
 
             var ans = Console.ReadLine();
             
@@ -107,9 +105,10 @@ namespace ConsoleApp
              LaunchEOSVR(n,kmax);
 
             Console.WriteLine("_______________________________________________________________________");
+
              } 
 
-            Console.WriteLine("Voulez-vous lancer le EO-ANN ?(if YES , type y):");
+            Console.WriteLine("Voulez-vous lancer le EO-ANN ?(if YES , type y; n if NO):");
 
              ans = Console.ReadLine();
             
@@ -117,14 +116,8 @@ namespace ConsoleApp
 
              LaunchANNEO(df, n, kmax);
               //LaunchANN(df.TrainingInput, df.TrainingOutput);
-
-
-            }    
-
-           
-
-           
-
+            }          
+             
         }
 
         static void LaunchEOSVR( int popSize, int iterMax)
@@ -141,10 +134,10 @@ namespace ConsoleApp
             eo_svr.Param_Tolerance = 0.001;// 0.001
             
             // Console.WriteLine("---------> SVR : ");
-            //eo_svr.Learn();    
-            
+            //eo_svr.Learn(); 
                       
             Console.WriteLine("---------> EO-SVR : ");
+
             eo_svr.LearnEO();
 
             Console.WriteLine("Best score = {0}", eo_svr.BestScore);
