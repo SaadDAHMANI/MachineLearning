@@ -39,8 +39,6 @@ namespace ConsoleApp
 
             Console.WriteLine("Hello SVR & ANN!");
 
-
-
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Ex.csv";
             // //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\DataSet_Exemple.csv";
 
@@ -48,7 +46,7 @@ namespace ConsoleApp
 
             // //QC_Sidi_Aissa SSL :
             //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa.csv";
-            // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
+            //string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
 
 
             // //Beni-Bahdel_Dame_3Q :
@@ -60,10 +58,19 @@ namespace ConsoleApp
             // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\Station_Ain_El_Assel_Dataset_1_Standard.csv";
 
             ////QC_Sidi_Aissa SSL :
-            string file = @"C:\SSL\QC_Sidi_Aissa.csv";
+            //string file = @"C:\SSL\QC_Sidi_Aissa.csv";
             // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
 
+            string fileName = String.Empty;
+            string file = string.Empty;
 
+            while (file ==string.Empty || System.IO.File.Exists(file)==false)
+            {
+                Console.WriteLine("Saisir le nom de fichier des données (dans le dossier : C:\\SSL) (n'oublier pas de standardiser les données)");
+                fileName = Console.ReadLine();
+                file = string.Format("C:\\SSL\\{0}.csv", fileName.Trim());
+            }   
+             
             LoadData(file);
     
             df = new DataFormater(DataSet);

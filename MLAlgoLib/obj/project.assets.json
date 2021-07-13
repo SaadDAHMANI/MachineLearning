@@ -375,8 +375,8 @@
     },
     "IOOperations/1.0.0": {
       "type": "project",
-      "path": "../IOOperations/IOOperations.csproj",
-      "msbuildProject": "../IOOperations/IOOperations.csproj"
+      "path": "../IOOPerations/IOOperations.csproj",
+      "msbuildProject": "../IOOPerations/IOOperations.csproj"
     },
     "MonoObjectiveEOALib/1.0.0": {
       "type": "project",
