@@ -177,11 +177,13 @@ public class EANN: EvolutionaryMLBase
               var Rtest = Statistics.Compute_CorrelationCoeff_R(TestingOutputs, computedTestingOutputs);  
         
               Console.WriteLine("Index (learn)= {0} | Index (test)= {1} ; Correlation : R (learn) = {2} | R (test) = {3}", LearningIndexScore, TestingIndexScore, Rlern,Rtest);
-       
-               fitnessValue = Math.Pow(LearningIndexScore,2) + Math.Pow(TestingIndexScore, 2);
+
+                //fitnessValue = Math.Pow(LearningIndexScore,2) + Math.Pow(TestingIndexScore, 2);
+
+                fitnessValue = Math.Pow(10, (2*(LearningIndexScore + TestingIndexScore)));
 
                 //fitnessValue = ((0.01 * (neuralNet.LayersStruct.Length - 1)) + 1) * fitnessValue;
-                              
+
                 if (fitnessValue < BestScore )
                 {
                     _BestScore = fitnessValue;
@@ -300,10 +302,10 @@ public class EANN: EvolutionaryMLBase
                         
                     SearchRanges = new List<MonoObjectiveEOALib.Range>
                      {
-                    new MonoObjectiveEOALib.Range("Activation Function",1, 1),
-                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 2, 2),
+                    new MonoObjectiveEOALib.Range("Activation Function",1, 2.1),
+                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.1, 5),
                     new MonoObjectiveEOALib.Range("Learning rate", 0.1, 0.1),
-                    new MonoObjectiveEOALib.Range("Momentum/Ajustement", 10,12),
+                    new MonoObjectiveEOALib.Range("Momentum/Ajustement", 10, 12),
                     new MonoObjectiveEOALib.Range("Learning Err", 0.001, 0.01),
                     new MonoObjectiveEOALib.Range("Max Iteration (Kmax)", MinLearningIterations, MaxLearningIterations),
                     new MonoObjectiveEOALib.Range("Hiden Layer Number", 1, 5),

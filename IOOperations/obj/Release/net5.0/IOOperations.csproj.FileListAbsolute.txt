@@ -9,3 +9,4 @@ E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.csproj
 E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.dll
 E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\ref\IOOperations.dll
 E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.pdb
+E:\VS19_Apps\MachineLearning\IOOPerations\obj\Release\net5.0\IOOperations.csprojAssemblyReference.cache

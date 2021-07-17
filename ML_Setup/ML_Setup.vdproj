@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:ML_Setup"
+"ProjectName" = "8:MLSetup"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -208,7 +208,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ML_Setup"
         "ProductCode" = "8:{9E4DD9C0-CF19-425C-9D92-7FB11F017C25}"
-        "PackageCode" = "8:{D779942F-C474-49D7-A697-565767B8D9F8}"
+        "PackageCode" = "8:{35A0848B-6D50-4137-B40D-2C58E07A98AA}"
         "UpgradeCode" = "8:{F94A8817-5068-43B2-B27A-48337E0A363A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -743,7 +743,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7CA8ADC830C142D78766F560C22F538A"
             {
-            "SourcePath" = "8:..\\ConsoleApp\\obj\\Release\\net5.0\\apphost.exe"
+            "SourcePath" = "8:..\\ConsoleApp\\obj\\Debug\\net5.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_396016D88A32468B8DD8485C10F9E9D1"

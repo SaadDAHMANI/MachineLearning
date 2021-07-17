@@ -30,9 +30,10 @@ namespace ConsoleApp
 {
     class Program
     {       
-         //static string fileName_DST;
+         static string fileName_DST;
          static DataSerieTD DataSet;
-         static DataFormater df;   
+         static DataFormater df;
+        static string fileName = String.Empty;
 
         static void Main(string[] args)
         {
@@ -60,7 +61,7 @@ namespace ConsoleApp
             //string file = @"C:\SSL\QC_Sidi_Aissa.csv";
             // string file = @"C:\Users\SD\Documents\Dataset_ANN_SVR\QC_Sidi_Aissa_Standards.csv";
 
-            string fileName = String.Empty;
+            
             string file = string.Empty;
 
             while (file ==string.Empty || System.IO.File.Exists(file)==false)
@@ -113,11 +114,26 @@ namespace ConsoleApp
              ans = Console.ReadLine();
             
             if (ans=="y" || ans =="yes") {
-
-             LaunchANNEO(df, n, kmax);
+                Console.WriteLine("Choisir l'algorithme d'apprentissage (0 : Backpropagation, 1 : Levenberg-Marquardt)");
+                
+                int learnAlgo = int.Parse(Console.ReadLine());
+                if (learnAlgo ==0 || learnAlgo ==1)
+                {
+                    LaunchANNEO(df, n, kmax, learnAlgo);
+                }
+                               
               //LaunchANN(df.TrainingInput, df.TrainingOutput);
-            }          
-             
+            }
+
+            Console.WriteLine("Taper f pour fermer");
+            string cmd = Console.ReadLine();
+            while (cmd != "f")
+            {
+                Console.WriteLine("Taper f pour fermer");
+                cmd = Console.ReadLine();
+            }
+
+
         }
 
         static void LaunchEOSVR( int popSize, int iterMax)
@@ -156,7 +172,9 @@ namespace ConsoleApp
                 }
             }
             
-            SaveResults(eo_svr,"C:\\SSL\\SVR.txt");
+
+
+            SaveResults(eo_svr,string.Format("C:\\SSL\\Results_SVR_{0}.txt", fileName.Trim()));
 
             //double[][] xy = new double[][] 
             //{
@@ -269,40 +287,47 @@ namespace ConsoleApp
 
         }
 
-        static void LaunchANNEO(DataFormater dfr, int n, int kmax)
+        static void LaunchANNEO(DataFormater dfr, int n, int kmax, int learnAlgo)
         {
             int minHLNeurones = 1;
-            int maxHLNeurones= 5;
-            int kminL = 50;
+            int maxHLNeurones= 15;
+            int kminL = 40;
             int kmaxL = 200;
-             
+
+            if (learnAlgo == 0)
+            {
+                kminL = 10000;
+                kmaxL = 21000;
+            }
+
             var ranges = new List<MonoObjectiveEOALib.Range>
                      {
-                    new MonoObjectiveEOALib.Range("Activation Function",2, 2.5),
-                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.1, 5),
+                    new MonoObjectiveEOALib.Range("Activation Function",0.9, 2.1),
+                    new MonoObjectiveEOALib.Range("Alpha of Activation Function", 0.1, 10),
                     new MonoObjectiveEOALib.Range("Learning rate", 0.05, 0.1),
-                    new MonoObjectiveEOALib.Range("Momentum/Ajustement", 10,12),
-                    new MonoObjectiveEOALib.Range("Learning Err", 0.001, 0.001),
+                    new MonoObjectiveEOALib.Range("Momentum/Ajustement", 10, 12),
+                    new MonoObjectiveEOALib.Range("Learning Err", 0.001, 0.01),
                     new MonoObjectiveEOALib.Range("Max Iteration (Kmax)", kminL, kmaxL),
                     new MonoObjectiveEOALib.Range("Hiden Layer Number", 1, 5),
                     new MonoObjectiveEOALib.Range("Layer 1 Nodes count",minHLNeurones, maxHLNeurones),
                     new MonoObjectiveEOALib.Range("Layer 2 Nodes count", minHLNeurones, maxHLNeurones),
                     new MonoObjectiveEOALib.Range("Layer 3 Nodes count", minHLNeurones, maxHLNeurones),
                     new MonoObjectiveEOALib.Range("Layer 4 Nodes count",  minHLNeurones, maxHLNeurones),
-                    new MonoObjectiveEOALib.Range("Layer 5 Nodes count", minHLNeurones, maxHLNeurones)
+                    new MonoObjectiveEOALib.Range("Layer 5 Nodes count", minHLNeurones, maxHLNeurones),
+                    new MonoObjectiveEOALib.Range("Layer 6 Nodes count", minHLNeurones, maxHLNeurones)
                      };
 
             EANN annEo = new EANN(dfr.TrainingInput, dfr.TrainingOutput, dfr.TestingInput, dfr.TestingOutput);
-            
-            annEo.Learning_Algorithm = LearningAlgorithmEnum.LevenbergMarquardtLearning ;
+
+            annEo.Learning_Algorithm = (LearningAlgorithmEnum)learnAlgo;// LearningAlgorithmEnum.LevenbergMarquardtLearning;
 
             annEo.SearchRanges = ranges;
 
             annEo.MaxOptimizationIterations= kmax;           
             annEo.PopulationSize = n;
-           
-            annEo.LearnEO();
 
+            annEo.LearnEO();
+           
             Console.WriteLine("EO-ANN :-> Best learning scroe = {0} ; EO-ANN :-> Best testing score = {1}", annEo.BestLearningScore, annEo.BestTestingScore);
 
             foreach (var itm in annEo.BestChart)
@@ -310,7 +335,7 @@ namespace ConsoleApp
                 Console.WriteLine(itm);
             }
 
-             SaveResults(annEo,"C:\\SSL\\ANN.txt");
+             SaveResults(annEo, string.Format("C:\\SSL\\Results_ANN_{0}.txt", fileName.Trim()));
 
             //double[][] xy = new double[][]
             // {
@@ -420,7 +445,8 @@ namespace ConsoleApp
             
                }
                }
-            
+            bool save = eo_ann.BestNeuralNetwork.SaveNeuralNetwork(string.Format("C:\\SSL\\The_Best_ANN_{0}.ann", fileName.Trim()));
+            Console.WriteLine("Save the best ANN : {0}", save);
         }
     }
 }

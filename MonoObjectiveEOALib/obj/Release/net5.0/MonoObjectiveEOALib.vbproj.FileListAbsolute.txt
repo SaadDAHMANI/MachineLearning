@@ -9,3 +9,4 @@ E:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Release\net5.0\MonoObjectiv
 E:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Release\net5.0\MonoObjectiveEOALib.dll
 E:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Release\net5.0\ref\MonoObjectiveEOALib.dll
 E:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Release\net5.0\MonoObjectiveEOALib.pdb
+E:\VS19_Apps\MachineLearning\MonoObjectiveEOALib\obj\Release\net5.0\MonoObjectiveEOALib.vbprojAssemblyReference.cache
