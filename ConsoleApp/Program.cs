@@ -82,7 +82,19 @@ namespace ConsoleApp
 
             //if (!Equals(df.TrainingInput, null)) { Console.WriteLine("Training = {0}", df.TrainingInput.Length); }
 
-            // // Luanch EOSVR with EOAlgo params.   
+            // // Luanch EOSVR with EOAlgo params.
+
+            Console.WriteLine("Would you compute using EXISTING ANN ???? (type y if YES)");
+            string answer = Console.ReadLine().Trim();
+            if (Equals(answer, "y") || Equals(answer, "Y"))
+            {
+                Console.WriteLine("Saisir le chemin complet de fichier du réseau.");
+                fileName = Console.ReadLine();
+                bool saved = LoadANN(fileName, df);
+                Console.WriteLine("Computation & saving operations : {0}", saved);
+            }
+            else { 
+
             int n=2;
 
             int kmax=2;
@@ -133,7 +145,7 @@ namespace ConsoleApp
                 cmd = Console.ReadLine();
             }
 
-
+            }
         }
 
         static void LaunchEOSVR( int popSize, int iterMax)
@@ -448,5 +460,58 @@ namespace ConsoleApp
             bool save = eo_ann.BestNeuralNetwork.SaveNeuralNetwork(string.Format("C:\\SSL\\The_Best_ANN_{0}.ann", fileName.Trim()));
             Console.WriteLine("Save the best ANN : {0}", save);
         }
+    
+        static bool LoadANN(string annfilePath, DataFormater dfr)
+        {
+            bool finalresult = false;
+            if (Equals(dfr, null)) { Console.WriteLine("No data !!!"); }
+            
+            var ann = new NeuralNetworkEngineEO();
+           
+            bool loaded=  ann.LoadNeuralNetwork(annfilePath);
+            
+            Console.WriteLine("ANN loading = {0}", loaded);
+
+            if (Object.Equals(ann, null)) { Console.WriteLine("I can not open Neural network file !!!"); }
+            var learning_out = ann.Compute(dfr.TrainingInput);
+            var testing_out = ann.Compute(dfr.TestingInput);
+
+           
+            string filePath = string.Format("C:\\SSL\\ANN_Results_at_{0}.csv", DateTime.Now.Minute.ToString());
+
+            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            {
+                using (StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.UTF8))
+                {
+
+                    System.Text.StringBuilder strb = new System.Text.StringBuilder();
+
+                    strb.AppendLine("Learning_Outputs;");
+
+                    for (int i = 0; i < learning_out.Length; i++)
+                    {
+                        strb.Append(learning_out[i][0]).AppendLine(";");
+                    }
+
+                    strb.AppendLine("*****************************************;");
+                    strb.AppendLine("Testing_Outputs;");
+                                       
+                    for (int i = 0; i < testing_out.Length; i++)
+                    {
+                        strb.Append(testing_out[i][0]).AppendLine(";");
+                    }
+
+                    sw.Write(strb.ToString());
+                    sw.Flush();
+                    sw.Close();
+                    fs.Close();
+                    finalresult = true;
+                }
+            }
+
+            return finalresult;
+
+        }
+
     }
 }

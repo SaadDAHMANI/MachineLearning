@@ -495,14 +495,14 @@ namespace ArtificialNeuralNetwork
                     { 
                     FileStream fileStrem = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                     IFormatter formatter = new BinaryFormatter();
-                    Network = (ActivationNetwork)formatter.Deserialize(fileStrem);
+                    this.Network = (ActivationNetwork)formatter.Deserialize(fileStrem);
                     result = true;
                     }
                 }
                 catch (Exception ex) { throw ex; }
                 return result;
             }
-            
+           
             public bool Save(string fileName)
             {
                 bool result = false;
